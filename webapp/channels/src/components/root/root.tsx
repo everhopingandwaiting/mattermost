@@ -220,10 +220,12 @@ export default class Root extends React.PureComponent<Props, State> {
         let rudderKey = '';
         switch (config.ServiceEnvironment) {
         case ServiceEnvironment.PRODUCTION:
-            rudderKey = '1aoejPqhgONMI720CsBSRWzzRQ9';
+            // rudderKey = '1aoejPqhgONMI720CsBSRWzzRQ9';
+            rudderKey = '';
             break;
         case ServiceEnvironment.TEST:
-            rudderKey = '1aoeoCDeh7OCHcbW2kseWlwUFyq';
+            // rudderKey = '1aoeoCDeh7OCHcbW2kseWlwUFyq';
+            rudderKey = '';
             break;
         case ServiceEnvironment.DEV:
             break;
@@ -295,7 +297,7 @@ export default class Root extends React.PureComponent<Props, State> {
         this.props.actions.migrateRecentEmojis();
         store.dispatch(loadRecentlyUsedCustomEmojis());
 
-        this.showLandingPageIfNecessary();
+        // this.showLandingPageIfNecessary();
 
         Utils.applyTheme(this.props.theme);
     };
