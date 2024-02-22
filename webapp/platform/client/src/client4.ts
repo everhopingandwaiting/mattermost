@@ -929,6 +929,7 @@ export default class Client4 {
     };
 
     getUser = (userId: string) => {
+        debugger
         return this.doFetch<UserProfile>(
             `${this.getUserRoute(userId)}`,
             {method: 'get'},

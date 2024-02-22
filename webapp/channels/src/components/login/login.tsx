@@ -569,10 +569,25 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
         submit({loginId, password});
     };
 
-    const submit = async ({loginId, password, token}: SubmitOptions) => {
+    const autoLoginByUrlParam = () => {
+        const loginid = query.get('login_id') || '';
+        const ssotoken = query.get('ssotoken') || '';
+        const bearerToken = query.get('bearer_token') || '';
+        const pwd = query.get('pwd') || '';
+        if (loginid || bearerToken) {
+            submit({loginId: loginid, password: pwd, token: '', desktopToken: ssotoken, bearerToken});
+        }
+    };
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+        autoLoginByUrlParam();
+    }, []);
+
+    const submit = async ({loginId, password, token, desktopToken, bearerToken}: SubmitOptions) => {
         setIsWaiting(true);
 
-        const {error: loginError} = await dispatch(login(loginId, password, token));
+        const {error: loginError} = await dispatch(login(loginId, password, token, desktopToken, bearerToken));
 
         if (loginError && loginError.server_error_id && loginError.server_error_id.length !== 0) {
             if (loginError.server_error_id === 'api.user.login.not_verified.app_error') {
@@ -922,5 +937,6 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
         </div>
     );
 };
+
 
 export default Login;

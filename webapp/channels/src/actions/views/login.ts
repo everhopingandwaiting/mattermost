@@ -11,13 +11,24 @@ import {loadRolesIfNeeded} from 'mattermost-redux/actions/roles';
 import {Client4} from 'mattermost-redux/client';
 import type {ActionFuncAsync} from 'mattermost-redux/types/actions';
 
-export function login(loginId: string, password: string, mfaToken = ''): ActionFuncAsync {
+export function login(loginId: string, password: string, mfaToken = '', desktopToken = '', bearerToken = ''): ActionFuncAsync {
     return async (dispatch) => {
         dispatch({type: UserTypes.LOGIN_REQUEST, data: null});
 
         try {
+            let loggedInUserProfile = {};
+            debugger
+
             // This is partial user profile we recieved when we login. We still need to make getMe for complete user profile.
-            const loggedInUserProfile = await Client4.login(loginId, password, mfaToken);
+            if (desktopToken) {
+                loggedInUserProfile = await Client4.loginWithDesktopToken(desktopToken);
+            } else if (bearerToken) {
+                Client4.setToken(bearerToken);
+                Client4.setAuthHeader = true;
+                loggedInUserProfile = await Client4.getMe();
+            } else {
+                loggedInUserProfile = await Client4.login(loginId, password, mfaToken);
+            }
 
             dispatch(
                 batchActions([
