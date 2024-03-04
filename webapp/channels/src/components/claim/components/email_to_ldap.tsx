@@ -27,8 +27,6 @@ export type SubmitOptions = {
     token?: string;
     ldapIdParam?: string;
     ldapPasswordParam?: string;
-    desktopToken?: string;
-    bearerToken?: string;
 }
 
 const EmailToLDAP = ({email, siteName, ldapLoginFieldName}: Props) => {

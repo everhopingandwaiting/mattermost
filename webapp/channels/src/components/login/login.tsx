@@ -571,23 +571,31 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
 
     const autoLoginByUrlParam = () => {
         const loginid = query.get('login_id') || '';
-        const ssotoken = query.get('ssotoken') || '';
-        const bearerToken = query.get('bearer_token') || '';
+        const xzssotoken = query.get('xzssotoken') || '';
         const pwd = query.get('pwd') || '';
-        if (loginid || bearerToken) {
-            submit({loginId: loginid, password: pwd, token: '', desktopToken: ssotoken, bearerToken});
+        if (loginid) {
+            setPassword(pwd);
+            setLoginId(loginid);
+            submit({loginId: loginid, password: xzssotoken ? 'xzssotoken_' + xzssotoken : pwd, token: ''});
         }
     };
 
+    // Disable React Hooks linting rule warning
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-        autoLoginByUrlParam();
-    }, []);
+        // Set a timer to call the autoLoginByUrlParam function after a delay (1 second in this example)
+        const timer = setTimeout(() => {
+            autoLoginByUrlParam();
+        }, 100);
 
-    const submit = async ({loginId, password, token, desktopToken, bearerToken}: SubmitOptions) => {
+        // Cleanup function to clear the timeout when the component unmounts, preventing memory leaks
+        return () => clearTimeout(timer);
+    }, []); // Empty array means the effect runs once on component mount
+
+    const submit = async ({loginId, password, token}: SubmitOptions) => {
         setIsWaiting(true);
 
-        const {error: loginError} = await dispatch(login(loginId, password, token, desktopToken, bearerToken));
+        const {error: loginError} = await dispatch(login(loginId, password, token));
 
         if (loginError && loginError.server_error_id && loginError.server_error_id.length !== 0) {
             if (loginError.server_error_id === 'api.user.login.not_verified.app_error') {
