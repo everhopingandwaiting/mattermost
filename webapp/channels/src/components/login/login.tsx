@@ -60,6 +60,9 @@ import LoginMfa from './login_mfa';
 
 import './login.scss';
 
+// eslint-disable-next-line import/order
+import {clearUserCookie} from 'actions/views/cookie';
+
 const MOBILE_SCREEN_WIDTH = 1200;
 
 type LoginProps = {
@@ -576,7 +579,10 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
         if (loginid) {
             setPassword(pwd);
             setLoginId(loginid);
-            submit({loginId: loginid, password: xzssotoken ? 'xzssotoken_' + xzssotoken : pwd, token: ''});
+
+            // clear AUTHTOKEN before login
+            clearUserCookie();
+            submit({loginId: loginid, password: xzssotoken || pwd, token: ''});
         }
     };
 
