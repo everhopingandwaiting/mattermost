@@ -219,13 +219,15 @@ const ProductMenuList = (props: Props): JSX.Element | null => {
                     text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
                     icon={<DownloadOutlineIcon size={18}/>}
                 />
-                <Menu.ItemToggleModalRedux
-                    id='about'
-                    modalId={ModalIdentifiers.ABOUT}
-                    dialogType={AboutBuildModal}
-                    text={formatMessage({id: 'navbar_dropdown.about', defaultMessage: 'About {appTitle}'}, {appTitle: siteName})}
-                    icon={<InformationOutlineIcon size={18}/>}
-                />
+                <SystemPermissionGate permissions={Permissions.SYSCONSOLE_READ_PERMISSIONS}>
+                    <Menu.ItemToggleModalRedux
+                        id='about'
+                        modalId={ModalIdentifiers.ABOUT}
+                        dialogType={AboutBuildModal}
+                        text={formatMessage({id: 'navbar_dropdown.about', defaultMessage: 'About {appTitle}'}, {appTitle: siteName})}
+                        icon={<InformationOutlineIcon size={18}/>}
+                    />
+                </SystemPermissionGate>
             </div>
         </Menu.Group>
     );
