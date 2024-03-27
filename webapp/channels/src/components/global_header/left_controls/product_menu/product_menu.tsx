@@ -148,7 +148,7 @@ const ProductMenu = (): JSX.Element => {
                     <ProductMenuItem
                         destination={'/'}
                         icon={'product-channels'}
-                        text={'频道'}
+                        text={formatMessage({id: 'global_header.productChannelsName', defaultMessage: 'Channels'})}
                         active={isChannels(currentProductID)}
                         onClick={handleClick}
                     />

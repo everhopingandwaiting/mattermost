@@ -3847,6 +3847,7 @@
   "globalThreads.title": "{prefix}话题 - {displayName} {siteName}",
   "global_header.productSettings": "设定",
   "global_header.productSwitchMenu": "产品切换菜单",
+  "global_header.productChannelsName": "互动协同",
   "group_list_modal.addGroupButton": "添加群组",
   "group_list_modal.removeGroupButton": "移除组",
   "group_member_list.loadError": "哎呀！加载该组时出了一些问题。",

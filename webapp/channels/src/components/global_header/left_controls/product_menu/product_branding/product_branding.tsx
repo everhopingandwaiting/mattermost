@@ -31,7 +31,7 @@ const ProductBranding = (): JSX.Element => {
                 size={200}
                 margin='none'
             >
-                {currentProduct ? currentProduct.switcherText : '频道'}
+                {currentProduct ? currentProduct.switcherText : formatMessage({id: 'global_header.productChannelsName', defaultMessage: 'Channels'})}
             </Heading>
         </ProductBrandingContainer>
     );
