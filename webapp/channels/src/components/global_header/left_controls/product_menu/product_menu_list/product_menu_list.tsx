@@ -212,14 +212,14 @@ const ProductMenuList = (props: Props): JSX.Element | null => {
                         icon={<ViewGridPlusOutlineIcon size={18}/>}
                     />
                 </TeamPermissionGate>
-                <Menu.ItemExternalLink
-                    id='nativeAppLink'
-                    show={appDownloadLink && !UserAgent.isMobileApp()}
-                    url={makeUrlSafe(appDownloadLink)}
-                    text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
-                    icon={<DownloadOutlineIcon size={18}/>}
-                />
                 <SystemPermissionGate permissions={Permissions.SYSCONSOLE_READ_PERMISSIONS}>
+                    <Menu.ItemExternalLink
+                        id='nativeAppLink'
+                        show={appDownloadLink && !UserAgent.isMobileApp()}
+                        url={makeUrlSafe(appDownloadLink)}
+                        text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
+                        icon={<DownloadOutlineIcon size={18}/>}
+                    />
                     <Menu.ItemToggleModalRedux
                         id='about'
                         modalId={ModalIdentifiers.ABOUT}
