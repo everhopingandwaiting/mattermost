@@ -2,6 +2,7 @@
 // See LICENSE.txt for license information.
 
 import React from 'react';
+import {useIntl} from 'react-intl';
 import styled from 'styled-components';
 
 import Heading from '@mattermost/compass-components/components/heading'; // eslint-disable-line no-restricted-imports
@@ -20,7 +21,7 @@ const ProductBrandingContainer = styled.div`
 
 const ProductBranding = (): JSX.Element => {
     const currentProduct = useCurrentProduct();
-
+    const {formatMessage} = useIntl();
     const Icon = currentProduct?.switcherIcon ? glyphMap[currentProduct.switcherIcon] : ProductChannelsIcon;
 
     return (
