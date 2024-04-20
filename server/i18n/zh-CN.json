@@ -125,35 +125,35 @@
   },
   {
     "id": "api.channel.add_member.added",
-    "translation": "%v 由 %v 邀请加入频道。"
+    "translation": "%v 由 %v 邀请加入群聊。"
   },
   {
     "id": "api.channel.add_user.to.channel.failed.app_error",
-    "translation": "添加用户到频道失败。"
+    "translation": "添加用户到群聊失败。"
   },
   {
     "id": "api.channel.add_user.to.channel.failed.deleted.app_error",
-    "translation": "无法将用户添加到频道，因为用户已从团队中移除。"
+    "translation": "无法将用户添加到群聊，因为用户已从团队中移除。"
   },
   {
     "id": "api.channel.add_user_to_channel.type.app_error",
-    "translation": "不能添加用户到该频道类型。"
+    "translation": "不能添加用户到该群聊类型。"
   },
   {
     "id": "api.channel.change_channel_privacy.private_to_public",
-    "translation": "此频道已转换到公共频道并允许任何团队成员加入。"
+    "translation": "此群聊已转换到公共群聊并允许任何团队成员加入。"
   },
   {
     "id": "api.channel.change_channel_privacy.public_to_private",
-    "translation": "此频道已转换到私有频道。"
+    "translation": "此群聊已转换到私有群聊。"
   },
   {
     "id": "api.channel.create_channel.direct_channel.app_error",
-    "translation": "必须使用 createDirectChannel API 创建私信频道。"
+    "translation": "必须使用 createDirectChannel API 创建私信群聊。"
   },
   {
     "id": "api.channel.create_channel.max_channel_limit.app_error",
-    "translation": "当前团队无法创建超过 {{.MaxChannelsPerTeam}} 个频道。"
+    "translation": "当前团队无法创建超过 {{.MaxChannelsPerTeam}} 个群聊。"
   },
   {
     "id": "api.channel.create_default_channels.off_topic",
@@ -161,15 +161,15 @@
   },
   {
     "id": "api.channel.create_default_channels.town_square",
-    "translation": "公共频道"
+    "translation": "公共群聊"
   },
   {
     "id": "api.channel.create_direct_channel.invalid_user.app_error",
-    "translation": "用于创建私信频道的用户 ID 无效。"
+    "translation": "用于创建私信群聊的用户 ID 无效。"
   },
   {
     "id": "api.channel.create_group.bad_size.app_error",
-    "translation": "团体消息频道必须至少包含 3 位但不超过 8 位用户。"
+    "translation": "团体消息群聊必须至少包含 3 位但不超过 8 位用户。"
   },
   {
     "id": "api.channel.create_group.bad_user.app_error",
@@ -177,19 +177,19 @@
   },
   {
     "id": "api.channel.delete_channel.archived",
-    "translation": "%v 已归档该频道。"
+    "translation": "%v 已归档该群聊。"
   },
   {
     "id": "api.channel.delete_channel.cannot.app_error",
-    "translation": "不能删除默认频道{{.Channel}}。"
+    "translation": "不能删除默认群聊{{.Channel}}。"
   },
   {
     "id": "api.channel.delete_channel.deleted.app_error",
-    "translation": "该频道已归档或者被删除。"
+    "translation": "该群聊已归档或者被删除。"
   },
   {
     "id": "api.channel.delete_channel.type.invalid",
-    "translation": "无法删除私信或组消息频道"
+    "translation": "无法删除私信或组消息群聊"
   },
   {
     "id": "api.channel.join_channel.permissions.app_error",
@@ -197,15 +197,15 @@
   },
   {
     "id": "api.channel.join_channel.post_and_forget",
-    "translation": "%v 已加入到该频道。"
+    "translation": "%v 已加入到该群聊。"
   },
   {
     "id": "api.channel.leave.default.app_error",
-    "translation": "不能退出默认频道{{.Channel}}。"
+    "translation": "不能退出默认群聊{{.Channel}}。"
   },
   {
     "id": "api.channel.leave.direct.app_error",
-    "translation": "无法退出私信频道。"
+    "translation": "无法退出私信群聊。"
   },
   {
     "id": "api.channel.leave.last_member.app_error",
@@ -213,15 +213,15 @@
   },
   {
     "id": "api.channel.leave.left",
-    "translation": "%v 已退出该频道。"
+    "translation": "%v 已退出该群聊。"
   },
   {
     "id": "api.channel.patch_update_channel.forbidden.app_error",
-    "translation": "更新频道失败。"
+    "translation": "更新群聊失败。"
   },
   {
     "id": "api.channel.post_channel_privacy_message.error",
-    "translation": "发布频道隐私更新消息失败。"
+    "translation": "发布群聊隐私更新消息失败。"
   },
   {
     "id": "api.channel.post_update_channel_displayname_message_and_forget.create_post.error",
@@ -229,31 +229,31 @@
   },
   {
     "id": "api.channel.post_update_channel_displayname_message_and_forget.retrieve_user.error",
-    "translation": "更新频道 DisplayName 字段时获取用户失败"
+    "translation": "更新群聊 DisplayName 字段时获取用户失败"
   },
   {
     "id": "api.channel.post_update_channel_displayname_message_and_forget.updated_from",
-    "translation": "%s 将频道显示名从 %s 更新为 %s"
+    "translation": "%s 将群聊显示名从 %s 更新为 %s"
   },
   {
     "id": "api.channel.post_update_channel_header_message_and_forget.post.error",
-    "translation": "更新频道标题消息失败"
+    "translation": "更新群聊标题消息失败"
   },
   {
     "id": "api.channel.post_update_channel_header_message_and_forget.removed",
-    "translation": "%s 删除了频道标题 (原为: %s)"
+    "translation": "%s 删除了群聊标题 (原为: %s)"
   },
   {
     "id": "api.channel.post_update_channel_header_message_and_forget.retrieve_user.error",
-    "translation": "尝试保存更新的频道标题时获取用户信息失败"
+    "translation": "尝试保存更新的群聊标题时获取用户信息失败"
   },
   {
     "id": "api.channel.post_update_channel_header_message_and_forget.updated_from",
-    "translation": "%s 将频道标题从 %s 更新为 %s"
+    "translation": "%s 将群聊标题从 %s 更新为 %s"
   },
   {
     "id": "api.channel.post_update_channel_header_message_and_forget.updated_to",
-    "translation": "%s 更新频道标题为: %s"
+    "translation": "%s 更新群聊标题为: %s"
   },
   {
     "id": "api.channel.post_user_add_remove_message_and_forget.error",
@@ -261,35 +261,35 @@
   },
   {
     "id": "api.channel.remove.default.app_error",
-    "translation": "无法从默认频道{{.Channel}}移出用户。"
+    "translation": "无法从默认群聊{{.Channel}}移出用户。"
   },
   {
     "id": "api.channel.remove_channel_member.type.app_error",
-    "translation": "无法从频道移除用户。"
+    "translation": "无法从群聊移除用户。"
   },
   {
     "id": "api.channel.remove_member.removed",
-    "translation": "%v 已从频道移出。"
+    "translation": "%v 已从群聊移出。"
   },
   {
     "id": "api.channel.rename_channel.cant_rename_direct_messages.app_error",
-    "translation": "您不能重命名私信频道。"
+    "translation": "您不能重命名私信群聊。"
   },
   {
     "id": "api.channel.rename_channel.cant_rename_group_messages.app_error",
-    "translation": "您不能重命名群消息频道。"
+    "translation": "您不能重命名群消息群聊。"
   },
   {
     "id": "api.channel.update_channel.deleted.app_error",
-    "translation": "该频道已归档或者被删除。"
+    "translation": "该群聊已归档或者被删除。"
   },
   {
     "id": "api.channel.update_channel.tried.app_error",
-    "translation": "试图对默认频道{{.Channel}}执行一个无效的更新。"
+    "translation": "试图对默认群聊{{.Channel}}执行一个无效的更新。"
   },
   {
     "id": "api.channel.update_channel_member_roles.scheme_role.app_error",
-    "translation": "提供的角色由方案管理，因此无法直接应用到频道成员。"
+    "translation": "提供的角色由方案管理，因此无法直接应用到群聊成员。"
   },
   {
     "id": "api.channel.update_channel_scheme.license.error",
@@ -297,7 +297,7 @@
   },
   {
     "id": "api.channel.update_channel_scheme.scheme_scope.error",
-    "translation": "无法设定频道方案因为提供的方案不是频道方案。"
+    "translation": "无法设定群聊方案因为提供的方案不是群聊方案。"
   },
   {
     "id": "api.channel.update_team_member_roles.scheme_role.app_error",
@@ -309,7 +309,7 @@
   },
   {
     "id": "api.command.command_post.forbidden.app_error",
-    "translation": "指定的用户不属于指定的频道。"
+    "translation": "指定的用户不属于指定的群聊。"
   },
   {
     "id": "api.command.disabled.app_error",
@@ -397,11 +397,11 @@
   },
   {
     "id": "api.command_channel_header.channel.app_error",
-    "translation": "获取当前频道错误。"
+    "translation": "获取当前群聊错误。"
   },
   {
     "id": "api.command_channel_header.desc",
-    "translation": "修改频道标题"
+    "translation": "修改群聊标题"
   },
   {
     "id": "api.command_channel_header.hint",
@@ -417,23 +417,23 @@
   },
   {
     "id": "api.command_channel_header.permission.app_error",
-    "translation": "您没有权限更改频道标题。"
+    "translation": "您没有权限更改群聊标题。"
   },
   {
     "id": "api.command_channel_header.update_channel.app_error",
-    "translation": "更新频道标题错误。"
+    "translation": "更新群聊标题错误。"
   },
   {
     "id": "api.command_channel_purpose.channel.app_error",
-    "translation": "获取当前频道错误。"
+    "translation": "获取当前群聊错误。"
   },
   {
     "id": "api.command_channel_purpose.desc",
-    "translation": "更改频道用途"
+    "translation": "更改群聊用途"
   },
   {
     "id": "api.command_channel_purpose.direct_group.app_error",
-    "translation": "无法更改私信频道用途。可使用 /header 修改标题。"
+    "translation": "无法更改私信群聊用途。可使用 /header 修改标题。"
   },
   {
     "id": "api.command_channel_purpose.hint",
@@ -449,27 +449,27 @@
   },
   {
     "id": "api.command_channel_purpose.permission.app_error",
-    "translation": "您没有权限更改频道用途。"
+    "translation": "您没有权限更改群聊用途。"
   },
   {
     "id": "api.command_channel_purpose.update_channel.app_error",
-    "translation": "更新频道用途错误。"
+    "translation": "更新群聊用途错误。"
   },
   {
     "id": "api.command_channel_remove.channel.app_error",
-    "translation": "获取当前频道错误。"
+    "translation": "获取当前群聊错误。"
   },
   {
     "id": "api.command_channel_rename.channel.app_error",
-    "translation": "获取当前频道错误。"
+    "translation": "获取当前群聊错误。"
   },
   {
     "id": "api.command_channel_rename.desc",
-    "translation": "重命名频道"
+    "translation": "重命名群聊"
   },
   {
     "id": "api.command_channel_rename.direct_group.app_error",
-    "translation": "不能重命名私信频道。"
+    "translation": "不能重命名私信群聊。"
   },
   {
     "id": "api.command_channel_rename.hint",
@@ -485,19 +485,19 @@
   },
   {
     "id": "api.command_channel_rename.permission.app_error",
-    "translation": "您没有权限重命名频道。"
+    "translation": "您没有权限重命名群聊。"
   },
   {
     "id": "api.command_channel_rename.too_long.app_error",
-    "translation": "频道名称必须小于或等于 {{.Length}} 个字符。"
+    "translation": "群聊名称必须小于或等于 {{.Length}} 个字符。"
   },
   {
     "id": "api.command_channel_rename.too_short.app_error",
-    "translation": "频道名称必须大于或等于 {{.Length}} 个字符。"
+    "translation": "群聊名称必须大于或等于 {{.Length}} 个字符。"
   },
   {
     "id": "api.command_channel_rename.update_channel.app_error",
-    "translation": "更新当前频道错误。"
+    "translation": "更新当前群聊错误。"
   },
   {
     "id": "api.command_code.desc",
@@ -627,31 +627,31 @@
   },
   {
     "id": "api.command_invite.channel.app_error",
-    "translation": "获取当前频道错误。"
+    "translation": "获取当前群聊错误。"
   },
   {
     "id": "api.command_invite.channel.error",
-    "translation": "无法找到频道{{.Channel}}。请使用[频道识别](https://docs.mattermost.com/messaging/managing-channels.html#naming-a-channel)以分辨频道。"
+    "translation": "无法找到群聊{{.Channel}}。请使用[群聊识别](https://docs.mattermost.com/messaging/managing-channels.html#naming-a-channel)以分辨群聊。"
   },
   {
     "id": "api.command_invite.desc",
-    "translation": "邀请用户到频道"
+    "translation": "邀请用户到群聊"
   },
   {
     "id": "api.command_invite.directchannel.app_error",
-    "translation": "您不能添加成员到私信频道。"
+    "translation": "您不能添加成员到私信群聊。"
   },
   {
     "id": "api.command_invite.fail.app_error",
-    "translation": "加入频道时发生错误。"
+    "translation": "加入群聊时发生错误。"
   },
   {
     "id": "api.command_invite.hint",
-    "translation": "@[用户名]... ~[频道]..."
+    "translation": "@[用户名]... ~[群聊]..."
   },
   {
     "id": "api.command_invite.missing_message.app_error",
-    "translation": "缺少用户名和/或频道。"
+    "translation": "缺少用户名和/或群聊。"
   },
   {
     "id": "api.command_invite.missing_user.app_error",
@@ -667,16 +667,16 @@
   },
   {
     "id": "api.command_invite.private_channel.app_error",
-    "translation": "无法找到频道 {{.Channel}}。请使用[频道识别](https://docs.mattermost.com/messaging/managing-channels.html#naming-a-channel)查找频道。"
+    "translation": "无法找到群聊 {{.Channel}}。请使用[群聊识别](https://docs.mattermost.com/messaging/managing-channels.html#naming-a-channel)查找群聊。"
   },
   {
     "id": "api.command_invite.success",
-    "translation": "已添加 {{.User}} 到 {{.Channel}} 频道。"
+    "translation": "已添加 {{.User}} 到 {{.Channel}} 群聊。"
   },
   {
     "id": "api.command_invite.user_already_in_channel.app_error",
     "translation": {
-      "other": "{{.User}} 已在频道。"
+      "other": "{{.User}} 已在群聊。"
     }
   },
   {
@@ -685,23 +685,23 @@
   },
   {
     "id": "api.command_join.desc",
-    "translation": "添加到公开频道"
+    "translation": "添加到公开群聊"
   },
   {
     "id": "api.command_join.fail.app_error",
-    "translation": "加入频道时发生错误。"
+    "translation": "加入群聊时发生错误。"
   },
   {
     "id": "api.command_join.hint",
-    "translation": "~[频道]"
+    "translation": "~[群聊]"
   },
   {
     "id": "api.command_join.list.app_error",
-    "translation": "列出频道时发生错误。"
+    "translation": "列出群聊时发生错误。"
   },
   {
     "id": "api.command_join.missing.app_error",
-    "translation": "无法找到该频道。"
+    "translation": "无法找到该群聊。"
   },
   {
     "id": "api.command_join.name",
@@ -713,11 +713,11 @@
   },
   {
     "id": "api.command_leave.desc",
-    "translation": "离开当前频道"
+    "translation": "离开当前群聊"
   },
   {
     "id": "api.command_leave.fail.app_error",
-    "translation": "离开频道时发生错误。"
+    "translation": "离开群聊时发生错误。"
   },
   {
     "id": "api.command_leave.name",
@@ -773,15 +773,15 @@
   },
   {
     "id": "api.command_mute.desc",
-    "translation": "关闭当前频道或指定[频道]的桌面、邮件以及推送通知。"
+    "translation": "关闭当前群聊或指定[群聊]的桌面、邮件以及推送通知。"
   },
   {
     "id": "api.command_mute.error",
-    "translation": "无法找到频道{{.Channel}}。请使用[频道识别](https://docs.mattermost.com/messaging/managing-channels.html#naming-a-channel)以分辨频道。"
+    "translation": "无法找到群聊{{.Channel}}。请使用[群聊识别](https://docs.mattermost.com/messaging/managing-channels.html#naming-a-channel)以分辨群聊。"
   },
   {
     "id": "api.command_mute.hint",
-    "translation": "~[频道]"
+    "translation": "~[群聊]"
   },
   {
     "id": "api.command_mute.name",
@@ -789,19 +789,19 @@
   },
   {
     "id": "api.command_mute.no_channel.error",
-    "translation": "无法找到指定的频道。请使用[频道识别](https://docs.mattermost.com/messaging/managing-channels.html#naming-a-channel) 以分辨频道。"
+    "translation": "无法找到指定的群聊。请使用[群聊识别](https://docs.mattermost.com/messaging/managing-channels.html#naming-a-channel) 以分辨群聊。"
   },
   {
     "id": "api.command_mute.not_member.error",
-    "translation": "无法静音频道 {{.Channel}} 因为您不是成员。"
+    "translation": "无法静音群聊 {{.Channel}} 因为您不是成员。"
   },
   {
     "id": "api.command_mute.success_mute",
-    "translation": "您将不会收到 {{.Channel}} 的通知直到取消频道静音。"
+    "translation": "您将不会收到 {{.Channel}} 的通知直到取消群聊静音。"
   },
   {
     "id": "api.command_mute.success_mute_direct_msg",
-    "translation": "您将不会收到此频道的通知直到取消频道静音。"
+    "translation": "您将不会收到此群聊的通知直到取消群聊静音。"
   },
   {
     "id": "api.command_mute.success_unmute",
@@ -809,7 +809,7 @@
   },
   {
     "id": "api.command_mute.success_unmute_direct_msg",
-    "translation": "此频道不再被静音。"
+    "translation": "此群聊不再被静音。"
   },
   {
     "id": "api.command_offline.desc",
@@ -841,11 +841,11 @@
   },
   {
     "id": "api.command_remove.desc",
-    "translation": "从频道移除位成员"
+    "translation": "从群聊移除位成员"
   },
   {
     "id": "api.command_remove.direct_group.app_error",
-    "translation": "您不能从私信频道移出成员。"
+    "translation": "您不能从私信群聊移出成员。"
   },
   {
     "id": "api.command_remove.hint",
@@ -869,7 +869,7 @@
   },
   {
     "id": "api.command_remove.user_not_in_channel",
-    "translation": "{{.Username}} 不是此频道的成员。"
+    "translation": "{{.Username}} 不是此群聊的成员。"
   },
   {
     "id": "api.command_search.desc",
@@ -973,7 +973,7 @@
   },
   {
     "id": "api.email_batching.add_notification_email_to_batch.channel_full.app_error",
-    "translation": "批量电子邮件任务接收频道已满。请提高EmailBatchingBufferSize。"
+    "translation": "批量电子邮件任务接收群聊已满。请提高EmailBatchingBufferSize。"
   },
   {
     "id": "api.email_batching.add_notification_email_to_batch.disabled.app_error",
@@ -1291,15 +1291,15 @@
   },
   {
     "id": "api.post.check_for_out_of_channel_mentions.message.multiple",
-    "translation": "@{{.Usernames}} 与 @{{.LastUsername}} 被提到了，但是他们因不在这个频道而不会收到通知。"
+    "translation": "@{{.Usernames}} 与 @{{.LastUsername}} 被提到了，但是他们因不在这个群聊而不会收到通知。"
   },
   {
     "id": "api.post.check_for_out_of_channel_mentions.message.one",
-    "translation": "@{{.Username}} 被提到了，但是他因不在此频道而不会收到通知。"
+    "translation": "@{{.Username}} 被提到了，但是他因不在此群聊而不会收到通知。"
   },
   {
     "id": "api.post.create_post.can_not_post_to_deleted.error",
-    "translation": "无法发信息到已删除的频道。"
+    "translation": "无法发信息到已删除的群聊。"
   },
   {
     "id": "api.post.create_post.channel_root_id.app_error",
@@ -1323,19 +1323,19 @@
   },
   {
     "id": "api.post.delete_post.can_not_delete_post_in_deleted.error",
-    "translation": "无法在已删除的频道中删除消息。"
+    "translation": "无法在已删除的群聊中删除消息。"
   },
   {
     "id": "api.post.disabled_all",
-    "translation": "由于频道拥有超过{{.Users}}位用户，因此已禁用 @all。"
+    "translation": "由于群聊拥有超过{{.Users}}位用户，因此已禁用 @all。"
   },
   {
     "id": "api.post.disabled_channel",
-    "translation": "由于频道拥有超过{{.Users}}位用户，因此已禁用 @channel。"
+    "translation": "由于群聊拥有超过{{.Users}}位用户，因此已禁用 @channel。"
   },
   {
     "id": "api.post.disabled_here",
-    "translation": "@here 已禁用因为频道超过 {{.Users}} 位用户。"
+    "translation": "@here 已禁用因为群聊超过 {{.Users}} 位用户。"
   },
   {
     "id": "api.post.do_action.action_id.app_error",
@@ -1359,11 +1359,11 @@
   },
   {
     "id": "api.post.patch_post.can_not_update_post_in_deleted.error",
-    "translation": "无法在已删除的频道更新消息。"
+    "translation": "无法在已删除的群聊更新消息。"
   },
   {
     "id": "api.post.send_notification_and_forget.push_channel_mention",
-    "translation": " 通知了频道。"
+    "translation": " 通知了群聊。"
   },
   {
     "id": "api.post.send_notification_and_forget.push_comment_on_post",
@@ -1391,7 +1391,7 @@
   },
   {
     "id": "api.post.update_post.can_not_update_post_in_deleted.error",
-    "translation": "无法在已删除的频道更新消息。"
+    "translation": "无法在已删除的群聊更新消息。"
   },
   {
     "id": "api.post.update_post.find.app_error",
@@ -1427,11 +1427,11 @@
   },
   {
     "id": "api.reaction.delete.archived_channel.app_error",
-    "translation": "您不能移除已归档的频道中的互动。"
+    "translation": "您不能移除已归档的群聊中的互动。"
   },
   {
     "id": "api.reaction.save.archived_channel.app_error",
-    "translation": "您不能在已归档的频道互动。"
+    "translation": "您不能在已归档的群聊互动。"
   },
   {
     "id": "api.reaction.save_reaction.invalid.app_error",
@@ -1459,7 +1459,7 @@
   },
   {
     "id": "api.scheme.get_channels_for_scheme.scope.error",
-    "translation": "无法获取方案的频道因为提供的方案不是频道方案。"
+    "translation": "无法获取方案的群聊因为提供的方案不是群聊方案。"
   },
   {
     "id": "api.scheme.get_teams_for_scheme.scope.error",
@@ -1499,19 +1499,19 @@
   },
   {
     "id": "api.slackimport.slack_add_channels.added",
-    "translation": "\r\n频道已添加：\r\n"
+    "translation": "\r\n群聊已添加：\r\n"
   },
   {
     "id": "api.slackimport.slack_add_channels.failed_to_add_user",
-    "translation": "无法添加 Slack 用户 {{.Username}} 到频道。\r\n"
+    "translation": "无法添加 Slack 用户 {{.Username}} 到群聊。\r\n"
   },
   {
     "id": "api.slackimport.slack_add_channels.import_failed",
-    "translation": "无法导入 Slack 频道 {{.DisplayName}}。\r\n"
+    "translation": "无法导入 Slack 群聊 {{.DisplayName}}。\r\n"
   },
   {
     "id": "api.slackimport.slack_add_channels.merge",
-    "translation": "Slack 频道 {{.DisplayName}} 已在 Masttermost 频道存在。已合并两频道。\r\n"
+    "translation": "Slack 群聊 {{.DisplayName}} 已在 Masttermost 群聊存在。已合并两群聊。\r\n"
   },
   {
     "id": "api.slackimport.slack_add_users.created",
@@ -1655,11 +1655,11 @@
   },
   {
     "id": "api.team.move_channel.post.error",
-    "translation": "发送频道移动消息失败。"
+    "translation": "发送群聊移动消息失败。"
   },
   {
     "id": "api.team.move_channel.success",
-    "translation": "此频道已从 %v 移至此团队。"
+    "translation": "此群聊已从 %v 移至此团队。"
   },
   {
     "id": "api.team.remove_team_icon.get_team.app_error",
@@ -1943,7 +1943,7 @@
   },
   {
     "id": "api.user.add_direct_channels_and_forget.failed.error",
-    "translation": "添加用户直接频道偏好设定失败 user_id={{.UserId}}, team_id={{.TeamId}}, err={{.Error}}"
+    "translation": "添加用户直接群聊偏好设定失败 user_id={{.UserId}}, team_id={{.TeamId}}, err={{.Error}}"
   },
   {
     "id": "api.user.authorize_oauth_user.bad_response.app_error",
@@ -2275,11 +2275,11 @@
   },
   {
     "id": "api.webhook.create_outgoing.intersect.app_error",
-    "translation": "同一频道的传出 webhooks 不能具有同样的触发词/回调URLs。"
+    "translation": "同一群聊的传出 webhooks 不能具有同样的触发词/回调URLs。"
   },
   {
     "id": "api.webhook.create_outgoing.not_open.app_error",
-    "translation": "只有公共频道可以创建传出 webhooks。"
+    "translation": "只有公共群聊可以创建传出 webhooks。"
   },
   {
     "id": "api.webhook.create_outgoing.permissions.app_error",
@@ -2299,7 +2299,7 @@
   },
   {
     "id": "api.webhook.update_outgoing.intersect.app_error",
-    "translation": "同一频道的传出 webhooks 不能具有同样的触发词/回调URLs。"
+    "translation": "同一群聊的传出 webhooks 不能具有同样的触发词/回调URLs。"
   },
   {
     "id": "api.websocket_handler.invalid_param.app_error",
@@ -2311,31 +2311,31 @@
   },
   {
     "id": "app.channel.create_channel.no_team_id.app_error",
-    "translation": "必须指定团队 ID 才能创建频道。"
+    "translation": "必须指定团队 ID 才能创建群聊。"
   },
   {
     "id": "app.channel.move_channel.members_do_not_match.error",
-    "translation": "无法移动频道除非所有成员已是目标团队的成员。"
+    "translation": "无法移动群聊除非所有成员已是目标团队的成员。"
   },
   {
     "id": "app.channel.post_update_channel_purpose_message.post.error",
-    "translation": "发送频道作用消息失败"
+    "translation": "发送群聊作用消息失败"
   },
   {
     "id": "app.channel.post_update_channel_purpose_message.removed",
-    "translation": "%s 删除了频道作用 (原为: %s)"
+    "translation": "%s 删除了群聊作用 (原为: %s)"
   },
   {
     "id": "app.channel.post_update_channel_purpose_message.retrieve_user.error",
-    "translation": "尝试保存更新的频道作用消息 %v 时获取用户信息失败"
+    "translation": "尝试保存更新的群聊作用消息 %v 时获取用户信息失败"
   },
   {
     "id": "app.channel.post_update_channel_purpose_message.updated_from",
-    "translation": "%s 将频道作用从: %s 更新为: %s"
+    "translation": "%s 将群聊作用从: %s 更新为: %s"
   },
   {
     "id": "app.channel.post_update_channel_purpose_message.updated_to",
-    "translation": "%s 更新了频道作用为: %s"
+    "translation": "%s 更新了群聊作用为: %s"
   },
   {
     "id": "app.export.export_write_line.io_writer.error",
@@ -2371,39 +2371,39 @@
   },
   {
     "id": "app.import.import_channel.scheme_deleted.error",
-    "translation": "无法设定频道使用已删除的方案。"
+    "translation": "无法设定群聊使用已删除的方案。"
   },
   {
     "id": "app.import.import_channel.scheme_wrong_scope.error",
-    "translation": "频道必须指定到频道范围的方案。"
+    "translation": "群聊必须指定到群聊范围的方案。"
   },
   {
     "id": "app.import.import_channel.team_not_found.error",
-    "translation": "导入频道失败。团队名 \"{{.TeamName}}\" 无法找到。"
+    "translation": "导入群聊失败。团队名 \"{{.TeamName}}\" 无法找到。"
   },
   {
     "id": "app.import.import_direct_channel.create_direct_channel.error",
-    "translation": "船舰私信组频道失败"
+    "translation": "船舰私信组群聊失败"
   },
   {
     "id": "app.import.import_direct_channel.create_group_channel.error",
-    "translation": "创建群频道失败"
+    "translation": "创建群群聊失败"
   },
   {
     "id": "app.import.import_direct_channel.update_header_failed.error",
-    "translation": "更新私信频道标题失败"
+    "translation": "更新私信群聊标题失败"
   },
   {
     "id": "app.import.import_direct_post.create_direct_channel.error",
-    "translation": "获取私信频道失败"
+    "translation": "获取私信群聊失败"
   },
   {
     "id": "app.import.import_direct_post.create_group_channel.error",
-    "translation": "获取组频道失败"
+    "translation": "获取组群聊失败"
   },
   {
     "id": "app.import.import_line.null_channel.error",
-    "translation": "导入数据行有类型 \"channel\" 但频道对象是无。"
+    "translation": "导入数据行有类型 \"channel\" 但群聊对象是无。"
   },
   {
     "id": "app.import.import_line.null_direct_channel.error",
@@ -2439,7 +2439,7 @@
   },
   {
     "id": "app.import.import_post.channel_not_found.error",
-    "translation": "导入消息失败。无法找到频道“{{.ChannelName}}”。"
+    "translation": "导入消息失败。无法找到群聊“{{.ChannelName}}”。"
   },
   {
     "id": "app.import.import_post.save_preferences.error",
@@ -2467,7 +2467,7 @@
   },
   {
     "id": "app.import.import_user_channels.save_preferences.error",
-    "translation": "导入用户频道成员错误。无法保存偏好。"
+    "translation": "导入用户群聊成员错误。无法保存偏好。"
   },
   {
     "id": "app.import.process_import_data_file_version_line.invalid_version.error",
@@ -2475,63 +2475,63 @@
   },
   {
     "id": "app.import.validate_channel_import_data.display_name_length.error",
-    "translation": "频道 display_name 不在允许的长度范围内。"
+    "translation": "群聊 display_name 不在允许的长度范围内。"
   },
   {
     "id": "app.import.validate_channel_import_data.header_length.error",
-    "translation": "频道标题过长。"
+    "translation": "群聊标题过长。"
   },
   {
     "id": "app.import.validate_channel_import_data.name_characters.error",
-    "translation": "频道名称包含无效字符。"
+    "translation": "群聊名称包含无效字符。"
   },
   {
     "id": "app.import.validate_channel_import_data.name_length.error",
-    "translation": "频道名称过长。"
+    "translation": "群聊名称过长。"
   },
   {
     "id": "app.import.validate_channel_import_data.name_missing.error",
-    "translation": "缺少频道必须属性：name"
+    "translation": "缺少群聊必须属性：name"
   },
   {
     "id": "app.import.validate_channel_import_data.purpose_length.error",
-    "translation": "频道作用过长。"
+    "translation": "群聊作用过长。"
   },
   {
     "id": "app.import.validate_channel_import_data.scheme_invalid.error",
-    "translation": "无效的频道方案名。"
+    "translation": "无效的群聊方案名。"
   },
   {
     "id": "app.import.validate_channel_import_data.team_missing.error",
-    "translation": "缺少频道必须属性：team"
+    "translation": "缺少群聊必须属性：team"
   },
   {
     "id": "app.import.validate_channel_import_data.type_invalid.error",
-    "translation": "无效频道类型。"
+    "translation": "无效群聊类型。"
   },
   {
     "id": "app.import.validate_channel_import_data.type_missing.error",
-    "translation": "缺少频道必须属性：type。"
+    "translation": "缺少群聊必须属性：type。"
   },
   {
     "id": "app.import.validate_direct_channel_import_data.header_length.error",
-    "translation": "私信频道标题过长"
+    "translation": "私信群聊标题过长"
   },
   {
     "id": "app.import.validate_direct_channel_import_data.members_required.error",
-    "translation": "缺少私信频道必须属性：members"
+    "translation": "缺少私信群聊必须属性：members"
   },
   {
     "id": "app.import.validate_direct_channel_import_data.members_too_few.error",
-    "translation": "私信频道成员列表数量过少"
+    "translation": "私信群聊成员列表数量过少"
   },
   {
     "id": "app.import.validate_direct_channel_import_data.members_too_many.error",
-    "translation": "私信频道成员列表数量过多"
+    "translation": "私信群聊成员列表数量过多"
   },
   {
     "id": "app.import.validate_direct_channel_import_data.unknown_favoriter.error",
-    "translation": "私信频道只能被成员设为最爱。“{{.Username}}”不是成员。"
+    "translation": "私信群聊只能被成员设为最爱。“{{.Username}}”不是成员。"
   },
   {
     "id": "app.import.validate_direct_post_import_data.channel_members_required.error",
@@ -2539,11 +2539,11 @@
   },
   {
     "id": "app.import.validate_direct_post_import_data.channel_members_too_few.error",
-    "translation": "私信频道成员列表数量过少"
+    "translation": "私信群聊成员列表数量过少"
   },
   {
     "id": "app.import.validate_direct_post_import_data.channel_members_too_many.error",
-    "translation": "私信频道成员列表数量过多"
+    "translation": "私信群聊成员列表数量过多"
   },
   {
     "id": "app.import.validate_direct_post_import_data.create_at_missing.error",
@@ -2563,7 +2563,7 @@
   },
   {
     "id": "app.import.validate_direct_post_import_data.unknown_flagger.error",
-    "translation": "私信频道只能被成员标记。“{{.Username}}”不是成员。"
+    "translation": "私信群聊只能被成员标记。“{{.Username}}”不是成员。"
   },
   {
     "id": "app.import.validate_direct_post_import_data.user_missing.error",
@@ -2715,7 +2715,7 @@
   },
   {
     "id": "app.import.validate_team_import_data.name_missing.error",
-    "translation": "缺少频道必须属性：name。"
+    "translation": "缺少群聊必须属性：name。"
   },
   {
     "id": "app.import.validate_team_import_data.name_reserved.error",
@@ -2731,27 +2731,27 @@
   },
   {
     "id": "app.import.validate_team_import_data.type_missing.error",
-    "translation": "缺少频道必须属性：type。"
+    "translation": "缺少群聊必须属性：type。"
   },
   {
     "id": "app.import.validate_user_channels_import_data.channel_name_missing.error",
-    "translation": "用户频道身份中缺少频道名称。"
+    "translation": "用户群聊身份中缺少群聊名称。"
   },
   {
     "id": "app.import.validate_user_channels_import_data.invalid_notify_props_desktop.error",
-    "translation": "用户的频道身份的桌面 NotifyProps 无效。"
+    "translation": "用户的群聊身份的桌面 NotifyProps 无效。"
   },
   {
     "id": "app.import.validate_user_channels_import_data.invalid_notify_props_mark_unread.error",
-    "translation": "用户的频道身份的 MarkUnread NotifyProps 无效。"
+    "translation": "用户的群聊身份的 MarkUnread NotifyProps 无效。"
   },
   {
     "id": "app.import.validate_user_channels_import_data.invalid_notify_props_mobile.error",
-    "translation": "用户的频道身份的移动设备 NotifyProps 无效。"
+    "translation": "用户的群聊身份的移动设备 NotifyProps 无效。"
   },
   {
     "id": "app.import.validate_user_channels_import_data.invalid_roles.error",
-    "translation": "用户频道成员身份的角色无效。"
+    "translation": "用户群聊成员身份的角色无效。"
   },
   {
     "id": "app.import.validate_user_import_data.auth_data_and_password.error",
@@ -2783,7 +2783,7 @@
   },
   {
     "id": "app.import.validate_user_import_data.notify_props_channel_trigger_invalid.error",
-    "translation": "无效用户频道触发 Notify Prop。"
+    "translation": "无效用户群聊触发 Notify Prop。"
   },
   {
     "id": "app.import.validate_user_import_data.notify_props_comments_trigger_invalid.error",
@@ -3387,7 +3387,7 @@
   },
   {
     "id": "manaultesting.test_autolink.unable.app_error",
-    "translation": "无法获得频道。"
+    "translation": "无法获得群聊。"
   },
   {
     "id": "mattermost.bulletin.subject",
@@ -3531,7 +3531,7 @@
   },
   {
     "id": "model.channel_member.is_valid.channel_id.app_error",
-    "translation": "无效的频道 id。"
+    "translation": "无效的群聊 id。"
   },
   {
     "id": "model.channel_member.is_valid.email_value.app_error",
@@ -3539,7 +3539,7 @@
   },
   {
     "id": "model.channel_member.is_valid.ignore_channel_mentions_value.app_error",
-    "translation": "无效的忽略频道提及状态。"
+    "translation": "无效的忽略群聊提及状态。"
   },
   {
     "id": "model.channel_member.is_valid.notify_level.app_error",
@@ -3631,7 +3631,7 @@
   },
   {
     "id": "model.command_hook.channel_id.app_error",
-    "translation": "无效的频道 id。"
+    "translation": "无效的群聊 id。"
   },
   {
     "id": "model.command_hook.command_id.app_error",
@@ -3763,7 +3763,7 @@
   },
   {
     "id": "model.config.is_valid.group_unread_channels.app_error",
-    "translation": "服务设置中的分组未读频道无效。必须为“disabled”、“default_on”或“default_off”。"
+    "translation": "服务设置中的分组未读群聊无效。必须为“disabled”、“default_on”或“default_off”。"
   },
   {
     "id": "model.config.is_valid.image_proxy_type.app_error",
@@ -3823,7 +3823,7 @@
   },
   {
     "id": "model.config.is_valid.max_channels.app_error",
-    "translation": "团队设置中每团队的最多频道数无效，必须是正整数。"
+    "translation": "团队设置中每团队的最多群聊数无效，必须是正整数。"
   },
   {
     "id": "model.config.is_valid.max_file_size.app_error",
@@ -3831,7 +3831,7 @@
   },
   {
     "id": "model.config.is_valid.max_notify_per_channel.app_error",
-    "translation": "团队设置中的每频道最大通知数无效。必须是正整数。"
+    "translation": "团队设置中的每群聊最大通知数无效。必须是正整数。"
   },
   {
     "id": "model.config.is_valid.max_users.app_error",
@@ -4087,7 +4087,7 @@
   },
   {
     "id": "model.incoming_hook.channel_id.app_error",
-    "translation": "无效的频道 id。"
+    "translation": "无效的群聊 id。"
   },
   {
     "id": "model.incoming_hook.create_at.app_error",
@@ -4223,7 +4223,7 @@
   },
   {
     "id": "model.outgoing_hook.is_valid.channel_id.app_error",
-    "translation": "无效的频道 id。"
+    "translation": "无效的群聊 id。"
   },
   {
     "id": "model.outgoing_hook.is_valid.content_type.app_error",
@@ -4291,7 +4291,7 @@
   },
   {
     "id": "model.post.is_valid.channel_id.app_error",
-    "translation": "无效的频道 id。"
+    "translation": "无效的群聊 id。"
   },
   {
     "id": "model.post.is_valid.create_at.app_error",
@@ -4571,31 +4571,31 @@
   },
   {
     "id": "store.sql_channel.get.existing.app_error",
-    "translation": "无法找到频道。"
+    "translation": "无法找到群聊。"
   },
   {
     "id": "store.sql_channel.save.archived_channel.app_error",
-    "translation": "您不能更改已归档的频道。"
+    "translation": "您不能更改已归档的群聊。"
   },
   {
     "id": "store.sql_channel.save.direct_channel.app_error",
-    "translation": "使用 SaveDirectChannel 创建私聊频道。"
+    "translation": "使用 SaveDirectChannel 创建私聊群聊。"
   },
   {
     "id": "store.sql_channel.save_channel.existing.app_error",
-    "translation": "必须对现有的频道执行更新。"
+    "translation": "必须对现有的群聊执行更新。"
   },
   {
     "id": "store.sql_channel.save_channel.exists.app_error",
-    "translation": "频道名称在团队中已存在。"
+    "translation": "群聊名称在团队中已存在。"
   },
   {
     "id": "store.sql_channel.save_channel.limit.app_error",
-    "translation": "您已经达到了允许的频道数量上限。"
+    "translation": "您已经达到了允许的群聊数量上限。"
   },
   {
     "id": "store.sql_channel.save_direct_channel.not_direct.app_error",
-    "translation": "不能试图用 SaveDirectChannel 创建私聊频道。"
+    "translation": "不能试图用 SaveDirectChannel 创建私聊群聊。"
   },
   {
     "id": "store.sql_command.save.get.app_error",
@@ -4631,11 +4631,11 @@
   },
   {
     "id": "web.incoming_webhook.channel.app_error",
-    "translation": "找不到该频道。"
+    "translation": "找不到该群聊。"
   },
   {
     "id": "web.incoming_webhook.channel_locked.app_error",
-    "translation": "此 webhook 不允许发消息到指定的频道。"
+    "translation": "此 webhook 不允许发消息到指定的群聊。"
   },
   {
     "id": "web.incoming_webhook.disabled.app_error",
@@ -4651,7 +4651,7 @@
   },
   {
     "id": "web.incoming_webhook.permissions.app_error",
-    "translation": "不合适的频道权限。"
+    "translation": "不合适的群聊权限。"
   },
   {
     "id": "web.incoming_webhook.split_props_length.app_error",
@@ -4667,31 +4667,31 @@
   },
   {
     "id": "app.channel.get_more_channels.get.app_error",
-    "translation": "无法获取频道。"
+    "translation": "无法获取群聊。"
   },
   {
     "id": "app.channel.permanent_delete.app_error",
-    "translation": "无法删除频道。"
+    "translation": "无法删除群聊。"
   },
   {
     "id": "app.channel.restore.app_error",
-    "translation": "无法恢复频道。"
+    "translation": "无法恢复群聊。"
   },
   {
     "id": "app.channel.update.bad_id",
-    "translation": "无法更新频道。"
+    "translation": "无法更新群聊。"
   },
   {
     "id": "app.channel.update_channel.internal_error",
-    "translation": "无法更新频道。"
+    "translation": "无法更新群聊。"
   },
   {
     "id": "app.channel_member_history.log_join_event.internal_error",
-    "translation": "记录频道成员历史失败。"
+    "translation": "记录群聊成员历史失败。"
   },
   {
     "id": "app.channel_member_history.log_leave_event.internal_error",
-    "translation": "记录频道成员历史失败。更新加入记录失败"
+    "translation": "记录群聊成员历史失败。更新加入记录失败"
   },
   {
     "id": "app.emoji.create.internal_error",
@@ -4843,7 +4843,7 @@
   },
   {
     "id": "bleveengine.create_channel_index.error",
-    "translation": "创建 bleve 频道索引错误。"
+    "translation": "创建 bleve 群聊索引错误。"
   },
   {
     "id": "app.terms_of_service.get.app_error",
@@ -4867,7 +4867,7 @@
   },
   {
     "id": "bleveengine.delete_channel.error",
-    "translation": "删除频道失败。"
+    "translation": "删除群聊失败。"
   },
   {
     "id": "bleveengine.delete_post.error",
@@ -4879,7 +4879,7 @@
   },
   {
     "id": "bleveengine.index_channel.error",
-    "translation": "索引频道失败。"
+    "translation": "索引群聊失败。"
   },
   {
     "id": "bleveengine.index_post.error",
@@ -4887,7 +4887,7 @@
   },
   {
     "id": "bleveengine.indexer.do_job.bulk_index_channels.batch_error",
-    "translation": "批量索引频道失败。"
+    "translation": "批量索引群聊失败。"
   },
   {
     "id": "bleveengine.indexer.do_job.bulk_index_posts.batch_error",
@@ -4899,7 +4899,7 @@
   },
   {
     "id": "bleveengine.indexer.do_job.get_oldest_entity.error",
-    "translation": "无法从数据库中获取最早的实体（用户、频道或消息）。"
+    "translation": "无法从数据库中获取最早的实体（用户、群聊或消息）。"
   },
   {
     "id": "bleveengine.indexer.do_job.parse_end_time.error",
@@ -4915,7 +4915,7 @@
   },
   {
     "id": "bleveengine.purge_channel_index.error",
-    "translation": "清除频道索引失败。"
+    "translation": "清除群聊索引失败。"
   },
   {
     "id": "app.user_terms_of_service.delete.app_error",
@@ -4939,7 +4939,7 @@
   },
   {
     "id": "bleveengine.stop_channel_index.error",
-    "translation": "关闭频道索引失败。"
+    "translation": "关闭群聊索引失败。"
   },
   {
     "id": "bleveengine.search_users_in_channel.uchan.error",
@@ -4975,7 +4975,7 @@
   },
   {
     "id": "ent.elasticsearch.delete_channel.error",
-    "translation": "删除频道失败"
+    "translation": "删除群聊失败"
   },
   {
     "id": "ent.elasticsearch.delete_user.error",
@@ -4983,7 +4983,7 @@
   },
   {
     "id": "ent.elasticsearch.index_channel.error",
-    "translation": "索引频道失败"
+    "translation": "索引群聊失败"
   },
   {
     "id": "ent.elasticsearch.index_user.error",
@@ -5023,7 +5023,7 @@
   },
   {
     "id": "ent.ldap.syncronize.delete_group_constained_memberships",
-    "translation": "删除团队或频道成员出错"
+    "translation": "删除团队或群聊成员出错"
   },
   {
     "id": "ent.ldap.validate_admin_filter.app_error",
@@ -5067,11 +5067,11 @@
   },
   {
     "id": "model.guest.is_valid.channel.app_error",
-    "translation": "无效的频道。"
+    "translation": "无效的群聊。"
   },
   {
     "id": "model.guest.is_valid.channels.app_error",
-    "translation": "无效的频道。"
+    "translation": "无效的群聊。"
   },
   {
     "id": "model.guest.is_valid.emails.app_error",
@@ -5143,11 +5143,11 @@
   },
   {
     "id": "api.channel.add_members.error",
-    "translation": "添加频道成员时发生错误。"
+    "translation": "添加群聊成员时发生错误。"
   },
   {
     "id": "api.channel.add_members.user_denied",
-    "translation": "频道权限拒绝以下用户因为组限制：{{ .UserIDs }}"
+    "translation": "群聊权限拒绝以下用户因为组限制：{{ .UserIDs }}"
   },
   {
     "id": "api.license.request-trial.bad-request",
@@ -5155,15 +5155,15 @@
   },
   {
     "id": "api.channel.remove_member.group_constrained.app_error",
-    "translation": "无法从组受限频道移除用户。"
+    "translation": "无法从组受限群聊移除用户。"
   },
   {
     "id": "api.channel.remove_members.denied",
-    "translation": "移除以下频道成员因组限制被拒绝：{{ .UserIDs }}"
+    "translation": "移除以下群聊成员因组限制被拒绝：{{ .UserIDs }}"
   },
   {
     "id": "api.channel.update_channel_member_roles.changing_guest_role.app_error",
-    "translation": "频道成员更新无效：您不能手动添加或移除访客角色。"
+    "translation": "群聊成员更新无效：您不能手动添加或移除访客角色。"
   },
   {
     "id": "api.command.execute_command.format.app_error",
@@ -5171,11 +5171,11 @@
   },
   {
     "id": "api.command_remove.group_constrained_user_denied",
-    "translation": "用户不能从此频道移除因为他们属于关联到此频道的组。如果想从此频道移除他们，必须从关联组里移除。"
+    "translation": "用户不能从此群聊移除因为他们属于关联到此群聊的组。如果想从此群聊移除他们，必须从关联组里移除。"
   },
   {
     "id": "api.file.upload_file.incorrect_channelId.app_error",
-    "translation": "无法上传文件。不正确的频道 ID：{{.channelId}}"
+    "translation": "无法上传文件。不正确的群聊 ID：{{.channelId}}"
   },
   {
     "id": "api.plugin.verify_plugin.app_error",
@@ -5183,7 +5183,7 @@
   },
   {
     "id": "api.post.check_for_out_of_channel_groups_mentions.message.multiple",
-    "translation": "@{{.Usernames}} 以及 @{{.LastUsername}} 未被通知因为他们不在此频道。他们未能被添加到频道因为他们不是关联组的成员。他们必须添加到关联组才能添加到此频道。"
+    "translation": "@{{.Usernames}} 以及 @{{.LastUsername}} 未被通知因为他们不在此群聊。他们未能被添加到群聊因为他们不是关联组的成员。他们必须添加到关联组才能添加到此群聊。"
   },
   {
     "id": "api.push_notification.disabled.app_error",
@@ -5215,11 +5215,11 @@
   },
   {
     "id": "api.team.invite_guests.channel_in_invalid_team.app_error",
-    "translation": "邀请到的频道必须属于团队。"
+    "translation": "邀请到的群聊必须属于团队。"
   },
   {
     "id": "api.team.update_team_member_roles.guest_and_user.app_error",
-    "translation": "频道成员更新无效：用户不能同时作为访客和用户。"
+    "translation": "群聊成员更新无效：用户不能同时作为访客和用户。"
   },
   {
     "id": "api.templates.invite_guest_subject",
@@ -5259,7 +5259,7 @@
   },
   {
     "id": "app.import.import_user_channels.channel_not_found.error",
-    "translation": "导入用户频道错误。未找到频道。"
+    "translation": "导入用户群聊错误。未找到群聊。"
   },
   {
     "id": "app.import.validate_post_import_data.props_too_large.error",
@@ -5319,11 +5319,11 @@
   },
   {
     "id": "bleveengine.search_channels.error",
-    "translation": "频道搜索无法完成。"
+    "translation": "群聊搜索无法完成。"
   },
   {
     "id": "ent.elasticsearch.create_template_channels_if_not_exists.template_create_failed",
-    "translation": "创建 Elasticsearch 频道模板失败"
+    "translation": "创建 Elasticsearch 群聊模板失败"
   },
   {
     "id": "ent.elasticsearch.search_channels.disabled",
@@ -5339,7 +5339,7 @@
   },
   {
     "id": "group_not_associated_to_synced_team",
-    "translation": "组在关联到父组同步的团队前不能关联到频道。"
+    "translation": "组在关联到父组同步的团队前不能关联到群聊。"
   },
   {
     "id": "interactive_message.decode_trigger_id.base64_decode_failed_signature",
@@ -5347,7 +5347,7 @@
   },
   {
     "id": "model.channel.is_valid.name.app_error",
-    "translation": "频道名称不能为 16 进制格式。请输入其他的频道名称。"
+    "translation": "群聊名称不能为 16 进制格式。请输入其他的群聊名称。"
   },
   {
     "id": "model.config.is_valid.bleve_search.enable_autocomplete.app_error",
@@ -5367,7 +5367,7 @@
   },
   {
     "id": "model.post.channel_notifications_disabled_in_channel.message",
-    "translation": "{{.ChannelName}}已停用频道通知。{{.Mention}}未触发任何通知。"
+    "translation": "{{.ChannelName}}已停用群聊通知。{{.Mention}}未触发任何通知。"
   },
   {
     "id": "model.user.is_valid.create_at.app_error",
@@ -5423,11 +5423,11 @@
   },
   {
     "id": "api.bot.teams_channels.add_message_mobile",
-    "translation": "请加我到您想要我互动的团队与频道。请使用浏览器或桌面应用进行操作。"
+    "translation": "请加我到您想要我互动的团队与群聊。请使用浏览器或桌面应用进行操作。"
   },
   {
     "id": "api.channel.add_guest.added",
-    "translation": "%v 由 %v 以访客身份添加至频道。"
+    "translation": "%v 由 %v 以访客身份添加至群聊。"
   },
   {
     "id": "api.channel.channel_member_counts_by_group.license.error",
@@ -5435,47 +5435,47 @@
   },
   {
     "id": "api.channel.get_channel_moderations.license.error",
-    "translation": "您的许可证不支持频道管理"
+    "translation": "您的许可证不支持群聊管理"
   },
   {
     "id": "api.channel.guest_join_channel.post_and_forget",
-    "translation": "%v 以访客身份加入频道。"
+    "translation": "%v 以访客身份加入群聊。"
   },
   {
     "id": "api.channel.patch_channel_moderations.license.error",
-    "translation": "您的许可证不支持频道管理"
+    "translation": "您的许可证不支持群聊管理"
   },
   {
     "id": "api.channel.remove_user_from_channel.app_error",
-    "translation": "不能从此频道类型移除该用户。"
+    "translation": "不能从此群聊类型移除该用户。"
   },
   {
     "id": "api.channel.restore_channel.restored.app_error",
-    "translation": "无法取消归档频道。此频道并未归档。"
+    "translation": "无法取消归档群聊。此群聊并未归档。"
   },
   {
     "id": "api.channel.restore_channel.unarchived",
-    "translation": "{{.Username}}取消归档了频道。"
+    "translation": "{{.Username}}取消归档了群聊。"
   },
   {
     "id": "api.channel.update_channel.typechange.app_error",
-    "translation": "频道类型无法更新。"
+    "translation": "群聊类型无法更新。"
   },
   {
     "id": "api.channel.update_channel_member_roles.guest_and_user.app_error",
-    "translation": "频道成员更新无效：用户不能同时作为访客和用户。"
+    "translation": "群聊成员更新无效：用户不能同时作为访客和用户。"
   },
   {
     "id": "api.channel.update_channel_privacy.default_channel_error",
-    "translation": "默认频道无法改为私有。"
+    "translation": "默认群聊无法改为私有。"
   },
   {
     "id": "api.channel.update_team_member_roles.changing_guest_role.app_error",
-    "translation": "频道成员更新无效：您不能手动添加或移除访客角色。"
+    "translation": "群聊成员更新无效：您不能手动添加或移除访客角色。"
   },
   {
     "id": "api.command_invite.user_not_in_team.app_error",
-    "translation": "一旦{{.Users}}成为**{{.Team}}**团队的成员，您可以将他们添加到此频道中。"
+    "translation": "一旦{{.Users}}成为**{{.Team}}**团队的成员，您可以将他们添加到此群聊中。"
   },
   {
     "id": "api.config.update_config.clear_siteurl.app_error",
@@ -5531,7 +5531,7 @@
   },
   {
     "id": "api.post.check_for_out_of_channel_groups_mentions.message.one",
-    "translation": "@{{.Username}} 未被通知因为他不在此频道。他们未能被添加到频道因为他们不是关联组的成员。他们必须添加到关联组才能添加到此频道。"
+    "translation": "@{{.Username}} 未被通知因为他不在此群聊。他们未能被添加到群聊因为他们不是关联组的成员。他们必须添加到关联组才能添加到此群聊。"
   },
   {
     "id": "api.post.error_get_post_id.pending",
@@ -5691,55 +5691,55 @@
   },
   {
     "id": "app.channel.create_channel.internal_error",
-    "translation": "无法保存频道。"
+    "translation": "无法保存群聊。"
   },
   {
     "id": "app.channel.create_direct_channel.internal_error",
-    "translation": "无法保存私信频道。"
+    "translation": "无法保存私信群聊。"
   },
   {
     "id": "app.channel.delete.app_error",
-    "translation": "无法删除频道。"
+    "translation": "无法删除群聊。"
   },
   {
     "id": "app.channel.get.existing.app_error",
-    "translation": "无法找到频道。"
+    "translation": "无法找到群聊。"
   },
   {
     "id": "app.channel.get_by_name.existing.app_error",
-    "translation": "无法找到频道。"
+    "translation": "无法找到群聊。"
   },
   {
     "id": "app.channel.get_by_name.missing.app_error",
-    "translation": "频道不存在。"
+    "translation": "群聊不存在。"
   },
   {
     "id": "app.channel.get_channels.get.app_error",
-    "translation": "无法获取频道。"
+    "translation": "无法获取群聊。"
   },
   {
     "id": "app.channel.get_channels.not_found.app_error",
-    "translation": "未找到频道。"
+    "translation": "未找到群聊。"
   },
   {
     "id": "app.channel.get_deleted.existing.app_error",
-    "translation": "未查找到已删除的频道。"
+    "translation": "未查找到已删除的群聊。"
   },
   {
     "id": "app.channel.get_deleted.missing.app_error",
-    "translation": "没有已删除的频道。"
+    "translation": "没有已删除的群聊。"
   },
   {
     "id": "app.channel.get.find.app_error",
-    "translation": "我们查找该频道时遇到了错误。"
+    "translation": "我们查找该群聊时遇到了错误。"
   },
   {
     "id": "app.channel.get_all_channels.app_error",
-    "translation": "无法获取所有频道。"
+    "translation": "无法获取所有群聊。"
   },
   {
     "id": "app.channel.get_all_channels_count.app_error",
-    "translation": "无法统计频道数。"
+    "translation": "无法统计群聊数。"
   },
   {
     "id": "model.group.name.invalid_length.app_error",
@@ -5867,7 +5867,7 @@
   },
   {
     "id": "ent.elasticsearch.delete_channel_posts.error",
-    "translation": "删除频道消息失败"
+    "translation": "删除群聊消息失败"
   },
   {
     "id": "bleveengine.delete_user_posts.error",
@@ -5875,7 +5875,7 @@
   },
   {
     "id": "bleveengine.delete_channel_posts.error",
-    "translation": "删除频道消息失败"
+    "translation": "删除群聊消息失败"
   },
   {
     "id": "app.scheme.delete.app_error",
@@ -5899,11 +5899,11 @@
   },
   {
     "id": "api.user.autocomplete_users.missing_team_id.app_error",
-    "translation": "需要团队 id 参数才能按频道自动完成。"
+    "translation": "需要团队 id 参数才能按群聊自动完成。"
   },
   {
     "id": "api.channel.move_channel.type.invalid",
-    "translation": "无法移动私信或群组消息频道"
+    "translation": "无法移动私信或群组消息群聊"
   },
   {
     "id": "app.reaction.save.save.app_error",
@@ -6079,7 +6079,7 @@
   },
   {
     "id": "ent.get_users_in_channel_during",
-    "translation": "指定时间段内获取频道用户失败。"
+    "translation": "指定时间段内获取群聊用户失败。"
   },
   {
     "id": "store.sql_command.update.missing.app_error",
@@ -6123,7 +6123,7 @@
   },
   {
     "id": "api.invalid_channel",
-    "translation": "请求中的频道列表不属于用户"
+    "translation": "请求中的群聊列表不属于用户"
   },
   {
     "id": "app.user_access_token.update_token_enable.app_error",
@@ -6315,7 +6315,7 @@
   },
   {
     "id": "app.post.permanent_delete_by_channel.app_error",
-    "translation": "无法根据频道删除消息。"
+    "translation": "无法根据群聊删除消息。"
   },
   {
     "id": "app.post.get.app_error",
@@ -6447,7 +6447,7 @@
   },
   {
     "id": "api.user.delete_channel.not_enabled.app_error",
-    "translation": "永久删除频道功能未开启。请联系系统管理员。"
+    "translation": "永久删除群聊功能未开启。请联系系统管理员。"
   },
   {
     "id": "api.post.search_posts.invalid_body.app_error",
@@ -6531,7 +6531,7 @@
   },
   {
     "id": "app.upload.create.incorrect_channel_id.app_error",
-    "translation": "无法上传到指定的频道。"
+    "translation": "无法上传到指定的群聊。"
   },
   {
     "id": "app.team.user_belongs_to_teams.app_error",
@@ -6639,19 +6639,19 @@
   },
   {
     "id": "app.post.get_root_posts.app_error",
-    "translation": "无法获取此频道的消息。"
+    "translation": "无法获取此群聊的消息。"
   },
   {
     "id": "app.post.get_posts_created_at.app_error",
-    "translation": "无法获取此频道的消息。"
+    "translation": "无法获取此群聊的消息。"
   },
   {
     "id": "app.post.get_posts_since.app_error",
-    "translation": "无法获取此频道的消息。"
+    "translation": "无法获取此群聊的消息。"
   },
   {
     "id": "app.post.get_posts_around.get.app_error",
-    "translation": "无法获取此频道的消息。"
+    "translation": "无法获取此群聊的消息。"
   },
   {
     "id": "app.post.get_posts.app_error",
@@ -6727,7 +6727,7 @@
   },
   {
     "id": "app.channel.update_last_viewed_at_post.app_error",
-    "translation": "无法标频道为未读。"
+    "translation": "无法标群聊为未读。"
   },
   {
     "id": "app.channel.update_last_viewed_at.app_error",
@@ -6739,7 +6739,7 @@
   },
   {
     "id": "app.channel.remove_member.app_error",
-    "translation": "无法移除频道成员。"
+    "translation": "无法移除群聊成员。"
   },
   {
     "id": "app.channel.pinned_posts.app_error",
@@ -6747,55 +6747,55 @@
   },
   {
     "id": "app.channel.permanent_delete_members_by_user.app_error",
-    "translation": "无法移除频道成员。"
+    "translation": "无法移除群聊成员。"
   },
   {
     "id": "app.channel.get_public_channels.get.app_error",
-    "translation": "无法获取公共频道。"
+    "translation": "无法获取公共群聊。"
   },
   {
     "id": "app.channel.get_private_channels.get.app_error",
-    "translation": "无法获取私有频道。"
+    "translation": "无法获取私有群聊。"
   },
   {
     "id": "app.channel.get_pinnedpost_count.app_error",
-    "translation": "无法获得该频道标注消息数。"
+    "translation": "无法获得该群聊标注消息数。"
   },
   {
     "id": "app.channel.get_members.app_error",
-    "translation": "无法获取频道成员。"
+    "translation": "无法获取群聊成员。"
   },
   {
     "id": "app.channel.get_member_count.app_error",
-    "translation": "无法获得该频道成员数。"
+    "translation": "无法获得该群聊成员数。"
   },
   {
     "id": "app.channel.get_member.missing.app_error",
-    "translation": "无法找到与此用户 ID 和频道 ID 相关联的频道成员。"
+    "translation": "无法找到与此用户 ID 和群聊 ID 相关联的群聊成员。"
   },
   {
     "id": "app.channel.get_member.app_error",
-    "translation": "无法获取频道成员。"
+    "translation": "无法获取群聊成员。"
   },
   {
     "id": "app.channel.get_for_post.app_error",
-    "translation": "无法获得该消息的频道。"
+    "translation": "无法获得该消息的群聊。"
   },
   {
     "id": "app.channel.get_channels_by_ids.not_found.app_error",
-    "translation": "未找到频道。"
+    "translation": "未找到群聊。"
   },
   {
     "id": "app.channel.get_channels_by_ids.get.app_error",
-    "translation": "无法获取频道。"
+    "translation": "无法获取群聊。"
   },
   {
     "id": "app.channel.get_channels_by_ids.app_error",
-    "translation": "无法以 id 获得频道。"
+    "translation": "无法以 id 获得群聊。"
   },
   {
     "id": "app.channel.get_channel_counts.get.app_error",
-    "translation": "无法获取频道数。"
+    "translation": "无法获取群聊数。"
   },
   {
     "id": "app.channel.count_posts_since.app_error",
@@ -6803,7 +6803,7 @@
   },
   {
     "id": "app.channel.analytics_type_count.app_error",
-    "translation": "无法获取频道类型数。"
+    "translation": "无法获取群聊类型数。"
   },
   {
     "id": "api.user.update_password.user_and_hashed.app_error",
@@ -6923,7 +6923,7 @@
   },
   {
     "id": "app.upload.create.cannot_upload_to_deleted_channel.app_error",
-    "translation": "无法上传到已删除的频道。"
+    "translation": "无法上传到已删除的群聊。"
   },
   {
     "id": "app.team.search_private_team.app_error",
@@ -6947,63 +6947,63 @@
   },
   {
     "id": "app.team.get_by_scheme.app_error",
-    "translation": "无法用提供的方案获取频道。"
+    "translation": "无法用提供的方案获取群聊。"
   },
   {
     "id": "ent.elasticsearch.index_channels_batch.error",
-    "translation": "无法为索引批量获取频道。"
+    "translation": "无法为索引批量获取群聊。"
   },
   {
     "id": "app.channel.user_belongs_to_channels.app_error",
-    "translation": "无法确定用户是否属于这些频道。"
+    "translation": "无法确定用户是否属于这些群聊。"
   },
   {
     "id": "app.channel.search_group_channels.app_error",
-    "translation": "无法以指定的用户和关键字获取群组频道。"
+    "translation": "无法以指定的用户和关键字获取群组群聊。"
   },
   {
     "id": "app.channel.search.app_error",
-    "translation": "搜索频道时遇到错误。"
+    "translation": "搜索群聊时遇到错误。"
   },
   {
     "id": "app.channel.reset_all_channel_schemes.app_error",
-    "translation": "无法重置频道方案。"
+    "translation": "无法重置群聊方案。"
   },
   {
     "id": "app.channel.remove_all_deactivated_members.app_error",
-    "translation": "我们无法从频道移除已停用的用户。"
+    "translation": "我们无法从群聊移除已停用的用户。"
   },
   {
     "id": "app.channel.migrate_channel_members.select.app_error",
-    "translation": "批量选择频道成员失败。"
+    "translation": "批量选择群聊成员失败。"
   },
   {
     "id": "app.channel.get_unread.app_error",
-    "translation": "无法获取频道未读消息。"
+    "translation": "无法获取群聊未读消息。"
   },
   {
     "id": "app.channel.get_members_by_ids.app_error",
-    "translation": "无法获取频道成员。"
+    "translation": "无法获取群聊成员。"
   },
   {
     "id": "app.channel.get_channels_batch_for_indexing.get.app_error",
-    "translation": "无法为索引批量获取频道。"
+    "translation": "无法为索引批量获取群聊。"
   },
   {
     "id": "app.channel.get_by_scheme.app_error",
-    "translation": "无法用提供的方案获取频道。"
+    "translation": "无法用提供的方案获取群聊。"
   },
   {
     "id": "app.channel.get_all_direct.app_error",
-    "translation": "无法获取所有私信频道。"
+    "translation": "无法获取所有私信群聊。"
   },
   {
     "id": "app.channel.get_all.app_error",
-    "translation": "无法获取所有频道。"
+    "translation": "无法获取所有群聊。"
   },
   {
     "id": "app.channel.clear_all_custom_role_assignments.select.app_error",
-    "translation": "获取频道成员失败。"
+    "translation": "获取群聊成员失败。"
   },
   {
     "id": "model.upload_session.is_valid.user_id.app_error",
@@ -7095,7 +7095,7 @@
   },
   {
     "id": "ent.elasticsearch.indexer.do_job.get_oldest_entity.error",
-    "translation": "无法从数据库中获取最早的实体（用户、频道或消息）"
+    "translation": "无法从数据库中获取最早的实体（用户、群聊或消息）"
   },
   {
     "id": "app.upload.upload_data.read_file.app_error",
@@ -7239,7 +7239,7 @@
   },
   {
     "id": "app.channel.save_member.exists.app_error",
-    "translation": "具有该 ID 的频道成员已经存在。"
+    "translation": "具有该 ID 的群聊成员已经存在。"
   },
   {
     "id": "api.user.update_user_roles.license.app_error",
@@ -7695,7 +7695,7 @@
   },
   {
     "id": "api.command_custom_status.success",
-    "translation": "你的状态已设为 “{{.EmojiName}} {{.StatusMessage}}”。你可在频道侧栏更改你的状态。"
+    "translation": "你的状态已设为 “{{.EmojiName}} {{.StatusMessage}}”。你可在群聊侧栏更改你的状态。"
   },
   {
     "id": "api.command_custom_status.name",
@@ -8059,23 +8059,23 @@
   },
   {
     "id": "api.command_channel_purpose.update_channel.max_length",
-    "translation": "输入的文本超出字符数限制。频道用途不得超过 {{.MaxLength}} 个字符。"
+    "translation": "输入的文本超出字符数限制。群聊用途不得超过 {{.MaxLength}} 个字符。"
   },
   {
     "id": "api.command_channel_header.update_channel.max_length",
-    "translation": "输入的文本超出字符数限制。频道标题不得超过 {{.MaxLength}} 个字符。"
+    "translation": "输入的文本超出字符数限制。群聊标题不得超过 {{.MaxLength}} 个字符。"
   },
   {
     "id": "api.command_share.channel_status.help",
-    "translation": "显示此共享频道的状态"
+    "translation": "显示此共享群聊的状态"
   },
   {
     "id": "api.command_share.channel_shared",
-    "translation": "现在已共享此频道。"
+    "translation": "现在已共享此群聊。"
   },
   {
     "id": "api.command_share.channel_invite.error",
-    "translation": "邀请 `{{.Name}}` 到此频道出错：{{.Error}}"
+    "translation": "邀请 `{{.Name}}` 到此群聊出错：{{.Error}}"
   },
   {
     "id": "api.command_remote.remove_remote_id.help",
@@ -8083,7 +8083,7 @@
   },
   {
     "id": "api.channel.create_channel.direct_channel.team_restricted_error",
-    "translation": "无法在这些用户之间创建直连频道因为他们不属于同一个团队。"
+    "translation": "无法在这些用户之间创建直连群聊因为他们不属于同一个团队。"
   },
   {
     "id": "api.admin.saml.failure_reset_authdata_to_email.app_error",
@@ -8103,15 +8103,15 @@
   },
   {
     "id": "api.command_share.permission_required",
-    "translation": "您需要`{{.Permission}}`权限才能管理共享频道。"
+    "translation": "您需要`{{.Permission}}`权限才能管理共享群聊。"
   },
   {
     "id": "api.command_share.not_shared_channel_unshare",
-    "translation": "无法取消共享未共享的频道。"
+    "translation": "无法取消共享未共享的群聊。"
   },
   {
     "id": "api.command_share.no_remote_invited",
-    "translation": "没有安全连接被邀请到该频道。"
+    "translation": "没有安全连接被邀请到该群聊。"
   },
   {
     "id": "api.command_share.name",
@@ -8127,11 +8127,11 @@
   },
   {
     "id": "api.command_share.invite_remote.help",
-    "translation": "邀请外部 Mattermost 实例加入当前共享频道"
+    "translation": "邀请外部 Mattermost 实例加入当前共享群聊"
   },
   {
     "id": "api.command_share.invitation_sent",
-    "translation": "共享频道邀请已发送至 `{{.Name}} {{.SiteURL}}`。"
+    "translation": "共享群聊邀请已发送至 `{{.Name}} {{.SiteURL}}`。"
   },
   {
     "id": "api.command_share.invalid_value.error",
@@ -8147,7 +8147,7 @@
   },
   {
     "id": "api.command_share.desc",
-    "translation": "与外部 Mattermost 实例共享当前频道。"
+    "translation": "与外部 Mattermost 实例共享当前群聊。"
   },
   {
     "id": "api.command_share.could_not_uninvite.error",
@@ -8155,19 +8155,19 @@
   },
   {
     "id": "api.command_share.check_channel_exist.error",
-    "translation": "检查共享频道 {{.ChannelID}} 是否存在时出错：{{.Error}}"
+    "translation": "检查共享群聊 {{.ChannelID}} 是否存在时出错：{{.Error}}"
   },
   {
     "id": "api.command_share.channel_status_id",
-    "translation": "频道 ID `{{.ChannelId}}` 的状态"
+    "translation": "群聊 ID `{{.ChannelId}}` 的状态"
   },
   {
     "id": "api.command_share.channel_remote_id_not_exists",
-    "translation": "共享频道安全连接 `{{.RemoteId}}` 不存在该频道。"
+    "translation": "共享群聊安全连接 `{{.RemoteId}}` 不存在该群聊。"
   },
   {
     "id": "api.command_share.channel_invite_not_home.error",
-    "translation": "无法邀请来自其他地方的共享频道到安全连接。"
+    "translation": "无法邀请来自其他地方的共享群聊到安全连接。"
   },
   {
     "id": "api.team.set_team_icon.check_image_limits.app_error",
@@ -8295,7 +8295,7 @@
   },
   {
     "id": "api.command_share.unshare_channel.help",
-    "translation": "取消共享当前频道"
+    "translation": "取消共享当前群聊"
   },
   {
     "id": "api.command_share.unknown_action",
@@ -8307,15 +8307,15 @@
   },
   {
     "id": "api.command_share.uninvite_remote.help",
-    "translation": "取消邀请来自此共享频道的安全连接"
+    "translation": "取消邀请来自此共享群聊的安全连接"
   },
   {
     "id": "api.command_share.shared_channel_unshare.error",
-    "translation": "无法取消此频道：{{.Error}}。"
+    "translation": "无法取消此群聊：{{.Error}}。"
   },
   {
     "id": "api.command_share.shared_channel_unavailable",
-    "translation": "此频道不再共享。"
+    "translation": "此群聊不再共享。"
   },
   {
     "id": "api.command_share.share_read_only.hint",
@@ -8323,15 +8323,15 @@
   },
   {
     "id": "api.command_share.share_read_only.help",
-    "translation": "频道将以只读模式共享"
+    "translation": "群聊将以只读模式共享"
   },
   {
     "id": "api.command_share.share_channel.error",
-    "translation": "无法共享此频道：{{.Error}}"
+    "translation": "无法共享此群聊：{{.Error}}"
   },
   {
     "id": "api.command_share.service_disabled",
-    "translation": "共享频道服务已禁用。"
+    "translation": "共享群聊服务已禁用。"
   },
   {
     "id": "api.command_share.remote_uninvited",
@@ -8351,7 +8351,7 @@
   },
   {
     "id": "sharedchannel.permalink.not_found",
-    "translation": "这消息包含指向其他频道的永久链接，其他网站的用户可能无法看到。"
+    "translation": "这消息包含指向其他群聊的永久链接，其他网站的用户可能无法看到。"
   },
   {
     "id": "sharedchannel.cannot_deliver_post",
@@ -8399,7 +8399,7 @@
   },
   {
     "id": "app.sharedchannel.dm_channel_creation.internal_error",
-    "translation": "创建共享私信频道时遇到错误。"
+    "translation": "创建共享私信群聊时遇到错误。"
   },
   {
     "id": "app.notification.footer.title",
@@ -8419,7 +8419,7 @@
   },
   {
     "id": "app.notification.body.mention.subTitle",
-    "translation": "当您不在时，{{.SenderName}} 在 {{.ChannelName}} 频道中提到了您。"
+    "translation": "当您不在时，{{.SenderName}} 在 {{.ChannelName}} 群聊中提到了您。"
   },
   {
     "id": "app.notification.body.group.title",
@@ -8583,7 +8583,7 @@
   },
   {
     "id": "model.channel_member.is_valid.roles_limit.app_error",
-    "translation": "无效频道成员角色，长度超过 {{.Limit}} 个字符的。"
+    "translation": "无效群聊成员角色，长度超过 {{.Limit}} 个字符的。"
   },
   {
     "id": "api.user.create_user.bad_token_email_data.app_error",
@@ -8595,7 +8595,7 @@
   },
   {
     "id": "ent.elasticsearch.getAllChannelMembers.error",
-    "translation": "获取所有频道成员失败"
+    "translation": "获取所有群聊成员失败"
   },
   {
     "id": "api.post.posts_by_ids.invalid_body.request_error",
@@ -8615,11 +8615,11 @@
   },
   {
     "id": "api.user.view_archived_channels.get_users_in_channel.app_error",
-    "translation": "无法从已归档频道的获取消息"
+    "translation": "无法从已归档群聊的获取消息"
   },
   {
     "id": "api.user.view_archived_channels.get_posts_for_channel.app_error",
-    "translation": "无法从已归档频道的获取消息"
+    "translation": "无法从已归档群聊的获取消息"
   },
   {
     "id": "api.templates.invite_body.title.reminder",
@@ -8675,7 +8675,7 @@
   },
   {
     "id": "app.channel.get_file_count.app_error",
-    "translation": "无法统计该频道的文件数量"
+    "translation": "无法统计该群聊的文件数量"
   },
   {
     "id": "api.user.authorize_oauth_user.saml_response_too_long.app_error",
@@ -8683,19 +8683,19 @@
   },
   {
     "id": "api.templates.invite_team_and_channels_subject",
-    "translation": "[{{ .SiteName }}] {{ .SenderName }} 邀请您加入 {{ .TeamDisplayName }} 团队的 {{ .ChannelsLen }} 频道组"
+    "translation": "[{{ .SiteName }}] {{ .SenderName }} 邀请您加入 {{ .TeamDisplayName }} 团队的 {{ .ChannelsLen }} 群聊组"
   },
   {
     "id": "api.templates.invite_team_and_channels_body.title",
-    "translation": "{{ .SenderName }} 邀请您加入{{ .TeamDisplayName }} 团队的 {{ .ChannelsLen }} 频道"
+    "translation": "{{ .SenderName }} 邀请您加入{{ .TeamDisplayName }} 团队的 {{ .ChannelsLen }} 群聊"
   },
   {
     "id": "api.templates.invite_team_and_channel_body.title",
-    "translation": "{{ .SenderName }} 邀请您加入 {{ .TeamDisplayName }} 团队的 {{ .ChannelName }} 频道"
+    "translation": "{{ .SenderName }} 邀请您加入 {{ .TeamDisplayName }} 团队的 {{ .ChannelName }} 群聊"
   },
   {
     "id": "api.templates.invite_team_and_channel_subject",
-    "translation": "[{{ .SiteName }}] {{ .SenderName }} 邀请您加入 {{ .TeamDisplayName }} 团队的 {{ .ChannelName }} 频道"
+    "translation": "[{{ .SiteName }}] {{ .SenderName }} 邀请您加入 {{ .TeamDisplayName }} 团队的 {{ .ChannelName }} 群聊"
   },
   {
     "id": "api.templates.cloud_upgrade_confirmation.title",
@@ -8779,7 +8779,7 @@
   },
   {
     "id": "model.member.is_valid.channel.app_error",
-    "translation": "无效的频道名"
+    "translation": "无效的群聊名"
   },
   {
     "id": "model.emoji.system_emoji_name.app_error",
@@ -8863,7 +8863,7 @@
   },
   {
     "id": "api.command_help.success",
-    "translation": "Mattermost 是一个开源平台，用于跨工具和团队的安全通信、协作和工作编排。\nMattermost 包含两个关键工具：\n\n**频道** - 通过 1:1 和群组消息与您的团队保持联系。\n**[Playbooks](/playbooks)** - 构建和配置可重复的流程以实现特定且可预测的结果。\n\n[查看文档和指南]({{.HelpLink}})"
+    "translation": "Mattermost 是一个开源平台，用于跨工具和团队的安全通信、协作和工作编排。\nMattermost 包含两个关键工具：\n\n**群聊** - 通过 1:1 和群组消息与您的团队保持联系。\n**[Playbooks](/playbooks)** - 构建和配置可重复的流程以实现特定且可预测的结果。\n\n[查看文档和指南]({{.HelpLink}})"
   },
   {
     "id": "api.cloud.delinquency_email.missing_email_to_trigger",
@@ -9039,7 +9039,7 @@
   },
   {
     "id": "api.draft.create_draft.can_not_draft_to_deleted.error",
-    "translation": "无法将草稿保存至已删除的频道"
+    "translation": "无法将草稿保存至已删除的群聊"
   },
   {
     "id": "api.config.update_config.translations.app_error",
@@ -9055,7 +9055,7 @@
   },
   {
     "id": "api.acknowledgement.save.archived_channel.app_error",
-    "translation": "您无法在已归档的频道中新增已读标识。"
+    "translation": "您无法在已归档的群聊中新增已读标识。"
   },
   {
     "id": "api.acknowledgement.delete.deadline.app_error",
@@ -9063,7 +9063,7 @@
   },
   {
     "id": "api.acknowledgement.delete.archived_channel.app_error",
-    "translation": "您无法从已归档的频道中移除已阅标识。"
+    "translation": "您无法从已归档的群聊中移除已阅标识。"
   },
   {
     "id": "api.templates.delinquency_90.subtitle2",
@@ -9423,7 +9423,7 @@
   },
   {
     "id": "app.channel.get_channels_member_count.existing.app_error",
-    "translation": "无法找到给定频道的成员计数。"
+    "translation": "无法找到给定群聊的成员计数。"
   },
   {
     "id": "app.channel.get_channels_member_count.find.app_error",
@@ -9435,11 +9435,11 @@
   },
   {
     "id": "app.channel.update_member.app_error",
-    "translation": "无法更新频道成员。"
+    "translation": "无法更新群聊成员。"
   },
   {
     "id": "app.channel.update_member.notify_props_limit_exceeded.app_error",
-    "translation": "无法更新频道成员，通知属性大小超过限制。"
+    "translation": "无法更新群聊成员，通知属性大小超过限制。"
   },
   {
     "id": "app.eport.generate_presigned_url.config.app_error",
@@ -9479,7 +9479,7 @@
   },
   {
     "id": "app.post_persistent_notification.delete_by_channel.app_error",
-    "translation": "无法通过频道删除持久通知。"
+    "translation": "无法通过群聊删除持久通知。"
   },
   {
     "id": "app.post_persistent_notification.delete_by_team.app_error",
@@ -9555,7 +9555,7 @@
   },
   {
     "id": "app.channel.get_common_teams.incorrect_channel_type",
-    "translation": "频道不是一个群组消息。"
+    "translation": "群聊不是一个群组消息。"
   },
   {
     "id": "app.channel.get_common_teams.store_get_common_teams_error",
@@ -9567,7 +9567,7 @@
   },
   {
     "id": "app.channel.group_message_conversion.channel_member_missing",
-    "translation": "找不到用户的频道成员资格"
+    "translation": "找不到用户的群聊成员资格"
   },
   {
     "id": "app.channel.group_message_conversion.incorrect_team",
@@ -9575,11 +9575,11 @@
   },
   {
     "id": "app.channel.group_message_conversion.original_channel_not_gm",
-    "translation": "被转换的频道不是一个群组消息。你只能转换群组消息"
+    "translation": "被转换的群聊不是一个群组消息。你只能转换群组消息"
   },
   {
     "id": "app.channel.group_message_conversion.post_message.error",
-    "translation": "创建群组消息到频道转换消息失败"
+    "translation": "创建群组消息到群聊转换消息失败"
   },
   {
     "id": "app.desktop_token.generateServerToken.invalid_or_expired",
@@ -9599,7 +9599,7 @@
   },
   {
     "id": "app.import.import_channel.deleting.app_error",
-    "translation": "无法归档导入的频道。"
+    "translation": "无法归档导入的群聊。"
   },
   {
     "id": "app.reaction.permanent_delete_by_user.app_error",
@@ -9607,11 +9607,11 @@
   },
   {
     "id": "api.channel.gm_to_channel_conversion.not_allowed_for_user.request_error",
-    "translation": "用户未被允许将群组消息转换为私人频道"
+    "translation": "用户未被允许将群组消息转换为私人群聊"
   },
   {
     "id": "api.channel.group_message.converted.to_private_channel",
-    "translation": "{{.ConvertedByUsername}} 从包含{{.GMMembers}}的群组消息创建了此频道。"
+    "translation": "{{.ConvertedByUsername}} 从包含{{.GMMembers}}的群组消息创建了此群聊。"
   },
   {
     "id": "api.channel.patch_update_channel.update_direct_or_group_messages_not_allowed.app_error",
@@ -9623,19 +9623,19 @@
   },
   {
     "id": "api.command_invite.channel_constrained_user_denied",
-    "translation": "该频道由群组管理。  该用户不是与该频道同步的群组的成员。"
+    "translation": "该群聊由群组管理。  该用户不是与该群聊同步的群组的成员。"
   },
   {
     "id": "api.command_invite.successOverflow",
-    "translation": "{{.FirstUser}}和{{.Others}}已添加到{{.Channel}}频道中。"
+    "translation": "{{.FirstUser}}和{{.Others}}已添加到{{.Channel}}群聊中。"
   },
   {
     "id": "api.command_invite.user_already_in_channel.overflow",
-    "translation": "{{.FirstUser}}和{{.Others}}等人已经在频道中。"
+    "translation": "{{.FirstUser}}和{{.Others}}等人已经在群聊中。"
   },
   {
     "id": "api.command_invite.user_not_in_team.messageOverflow",
-    "translation": "一旦{{.FirstUser}}和{{.Others}}等人成为**{{.Team}}**团队的成员，您可以将他们添加到此频道中。"
+    "translation": "一旦{{.FirstUser}}和{{.Others}}等人成为**{{.Team}}**团队的成员，您可以将他们添加到此群聊中。"
   },
   {
     "id": "humanize.list_join",
@@ -9655,7 +9655,7 @@
   },
   {
     "id": "app.thread.mark_all_as_read_by_channels.app_error",
-    "translation": "无法将频道中的所有主题标记为已读"
+    "translation": "无法将群聊中的所有主题标记为已读"
   },
   {
     "id": "api.emoji.get_multiple_by_name_too_many.request_error",
@@ -9815,7 +9815,7 @@
   },
   {
     "id": "api.command_share.channel_not_shared.error",
-    "translation": "无法邀请远端，因为频道 {{.ChannelID}} 未共享。"
+    "translation": "无法邀请远端，因为群聊 {{.ChannelID}} 未共享。"
   },
   {
     "id": "api.post.move_thread.disabled.app_error",
@@ -9843,7 +9843,7 @@
   },
   {
     "id": "app.post.move_thread.from_another_channel",
-    "translation": "此对话移动自其他频道"
+    "translation": "此对话移动自其他群聊"
   },
   {
     "id": "model.config.is_valid.move_thread.domain_invalid.app_error",
@@ -9931,11 +9931,11 @@
   },
   {
     "id": "app.channel.patch_channel_members_notify_props.app_error",
-    "translation": "无法更新频道成员的通知属性。"
+    "translation": "无法更新群聊成员的通知属性。"
   },
   {
     "id": "app.channel.patch_channel_members_notify_props.too_many",
-    "translation": "无法更新过多频道成员。每次最多只能更新 {{.Max}} 位频道成员。"
+    "translation": "无法更新过多群聊成员。每次最多只能更新 {{.Max}} 位群聊成员。"
   },
   {
     "id": "app.report.get_user_count_for_report.store_error",
@@ -10051,7 +10051,7 @@
   },
   {
     "id": "app.channel.add_member.deleted_user.app_error",
-    "translation": "无法添加此用户为频道成员。"
+    "translation": "无法添加此用户为群聊成员。"
   },
   {
     "id": "api.context.outgoing_oauth_connection.delete_connection.app_error",
@@ -10151,7 +10151,7 @@
   },
   {
     "id": "api.command_share.invite_remote_to_channel.error",
-    "translation": "无法邀请远端至频道：{{.Error}}"
+    "translation": "无法邀请远端至群聊：{{.Error}}"
   },
   {
     "id": "bleveengine.purge_list.not_implemented",
@@ -10159,55 +10159,55 @@
   },
   {
     "id": "api.channel.bookmark.channel_bookmark.license.error",
-    "translation": "您的许可证不支持频道书签。"
+    "translation": "您的许可证不支持群聊书签。"
   },
   {
     "id": "api.channel.bookmark.create_channel_bookmark.direct_or_group_channels.forbidden.app_error",
-    "translation": "用户未被允许创建频道书签。"
+    "translation": "用户未被允许创建群聊书签。"
   },
   {
     "id": "api.channel.bookmark.create_channel_bookmark.direct_or_group_channels_by_guests.forbidden.app_error",
-    "translation": "创建频道书签失败。"
+    "translation": "创建群聊书签失败。"
   },
   {
     "id": "api.channel.bookmark.create_channel_bookmark.forbidden.app_error",
-    "translation": "创建频道书签失败。"
+    "translation": "创建群聊书签失败。"
   },
   {
     "id": "api.channel.bookmark.delete_channel_bookmark.direct_or_group_channels.forbidden.app_error",
-    "translation": "删除频道书签失败。"
+    "translation": "删除群聊书签失败。"
   },
   {
     "id": "api.channel.bookmark.delete_channel_bookmark.direct_or_group_channels_by_guests.forbidden.app_error",
-    "translation": "删除频道书签失败。"
+    "translation": "删除群聊书签失败。"
   },
   {
     "id": "api.channel.bookmark.delete_channel_bookmark.forbidden.app_error",
-    "translation": "删除频道书签失败。"
+    "translation": "删除群聊书签失败。"
   },
   {
     "id": "api.channel.bookmark.update_channel_bookmark.direct_or_group_channels.forbidden.app_error",
-    "translation": "更新频道书签失败。"
+    "translation": "更新群聊书签失败。"
   },
   {
     "id": "api.channel.bookmark.update_channel_bookmark.direct_or_group_channels_by_guests.forbidden.app_error",
-    "translation": "更新频道书签失败。"
+    "translation": "更新群聊书签失败。"
   },
   {
     "id": "api.channel.bookmark.update_channel_bookmark.forbidden.app_error",
-    "translation": "更新频道书签失败。"
+    "translation": "更新群聊书签失败。"
   },
   {
     "id": "api.channel.bookmark.update_channel_bookmark_sort_order.direct_or_group_channels.forbidden.app_error",
-    "translation": "更新频道书签的排序顺序失败。"
+    "translation": "更新群聊书签的排序顺序失败。"
   },
   {
     "id": "api.channel.bookmark.update_channel_bookmark_sort_order.direct_or_group_channels_by_guests.forbidden.app_error",
-    "translation": "更新频道书签的排序顺序失败。"
+    "translation": "更新群聊书签的排序顺序失败。"
   },
   {
     "id": "api.channel.bookmark.update_channel_bookmark_sort_order.forbidden.app_error",
-    "translation": "更新频道书签的排序顺序失败。"
+    "translation": "更新群聊书签的排序顺序失败。"
   },
   {
     "id": "app.channel.bookmark.save.app_error",
@@ -10271,7 +10271,7 @@
   },
   {
     "id": "api.config.update.elasticsearch.autocomplete_cannot_be_enabled_error",
-    "translation": "频道自动补全无法启用，因为频道索引表已过期。推荐您重新生成频道索引。查看 Mattermost 更新日志以了解更多信息"
+    "translation": "群聊自动补全无法启用，因为群聊索引表已过期。推荐您重新生成群聊索引。查看 Mattermost 更新日志以了解更多信息"
   },
   {
     "id": "app.channel.bookmark.update.app_error",
@@ -10283,7 +10283,7 @@
   },
   {
     "id": "app.channel.elasticsearch_channel_index.notify_admin.message",
-    "translation": "您的 Elasticsearch 频道索引表已过期。推荐您重新生成频道索引。\n在[系统控制台中的 Elasticsearch 部分]({{.ElasticsearchSection}})点击`重建频道索引`以解决问题。\n查看 Mattermost 更新日志以了解更多信息。"
+    "translation": "您的 Elasticsearch 群聊索引表已过期。推荐您重新生成群聊索引。\n在[系统控制台中的 Elasticsearch 部分]({{.ElasticsearchSection}})点击`重建群聊索引`以解决问题。\n查看 Mattermost 更新日志以了解更多信息。"
   },
   {
     "id": "ent.elasticsearch.purge_index.delete_failed",
@@ -10295,7 +10295,7 @@
   },
   {
     "id": "model.channel_bookmark.is_valid.channel_id.app_error",
-    "translation": "频道 id 无效。"
+    "translation": "群聊 id 无效。"
   },
   {
     "id": "model.channel_bookmark.is_valid.create_at.app_error",
@@ -10311,11 +10311,11 @@
   },
   {
     "id": "api.channel.update_channel_member_roles.guest.app_error",
-    "translation": "频道成员更新无效：访客不能成为团队成员或团队管理员，请先提升为用户。"
+    "translation": "群聊成员更新无效：访客不能成为团队成员或团队管理员，请先提升为用户。"
   },
   {
     "id": "api.channel.update_channel_member_roles.user_and_guest.app_error",
-    "translation": "频道成员更新无效：不能将访客设置到单一频道，系统管理员必须将访客升级为用户或将用户降级为访客。"
+    "translation": "群聊成员更新无效：不能将访客设置到单一群聊，系统管理员必须将访客升级为用户或将用户降级为访客。"
   },
   {
     "id": "app.import.import_line.null_role.error",
