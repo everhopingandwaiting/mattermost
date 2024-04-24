@@ -20,12 +20,12 @@ func (a *App) AdjustInProductLimits(limits *model.ProductLimits, subscription *m
 
 // Create/ Update a subscription history event
 func (a *App) SendSubscriptionHistoryEvent(userID string) (*model.SubscriptionHistory, error) {
-	license := a.Srv().License()
+	// license := a.Srv().License()
 
-	// No need to create a Subscription History Event if the license isn't cloud
-	if !license.IsCloud() {
-		return nil, nil
-	}
+	// // No need to create a Subscription History Event if the license isn't cloud
+	// if !license.IsCloud() {
+	// 	return nil, nil
+	// }
 
 	// Get user count
 	userCount, err := a.Srv().Store().User().Count(model.UserCountOptions{})

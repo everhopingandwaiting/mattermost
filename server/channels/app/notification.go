@@ -30,15 +30,15 @@ func (a *App) canSendPushNotifications() bool {
 		return false
 	}
 
-	pushServer := *a.Config().EmailSettings.PushNotificationServer
-	if license := a.Srv().License(); pushServer == model.MHPNS && (license == nil || !*license.Features.MHPNS) {
-		a.NotificationsLog().Warn("Push notifications are disabled - license missing",
-			mlog.String("status", model.NotificationStatusNotSent),
-			mlog.String("reason", "push_disabled_license"),
-		)
-		mlog.Warn("Push notifications have been disabled. Update your license or go to System Console > Environment > Push Notification Server to use a different server")
-		return false
-	}
+	// pushServer := *a.Config().EmailSettings.PushNotificationServer
+	// if license := a.Srv().License(); pushServer == model.MHPNS && (license == nil || !*license.Features.MHPNS) {
+	// 	a.NotificationsLog().Warn("Push notifications are disabled - license missing",
+	// 		mlog.String("status", model.NotificationStatusNotSent),
+	// 		mlog.String("reason", "push_disabled_license"),
+	// 	)
+	// 	mlog.Warn("Push notifications have been disabled. Update your license or go to System Console > Environment > Push Notification Server to use a different server")
+	// 	return false
+	// }
 
 	return true
 }
@@ -1429,9 +1429,9 @@ func (a *App) allowChannelMentions(c request.CTX, post *model.Post, numProfiles 
 
 // allowGroupMentions returns whether or not the group mentions are allowed for the given post.
 func (a *App) allowGroupMentions(c request.CTX, post *model.Post) bool {
-	if license := a.Srv().License(); license == nil || (license.SkuShortName != model.LicenseShortSkuProfessional && license.SkuShortName != model.LicenseShortSkuEnterprise) {
-		return false
-	}
+	// if license := a.Srv().License(); license == nil || (license.SkuShortName != model.LicenseShortSkuProfessional && license.SkuShortName != model.LicenseShortSkuEnterprise) {
+	// 	return false
+	// }
 
 	if !a.HasPermissionToChannel(c, post.UserId, post.ChannelId, model.PermissionUseGroupMentions) {
 		return false

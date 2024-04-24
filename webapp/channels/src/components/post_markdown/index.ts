@@ -67,7 +67,8 @@ function makeMapStateToProps() {
         const subscriptionProduct = getSubscriptionProduct(state);
 
         const config = getConfig(state);
-        const isEnterpriseReady = config.BuildEnterpriseReady === 'true';
+        // const isEnterpriseReady = config.BuildEnterpriseReady === 'true';
+        const isEnterpriseReady = true;
 
         return {
             channel,

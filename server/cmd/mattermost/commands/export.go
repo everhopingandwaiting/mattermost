@@ -161,7 +161,7 @@ func scheduleExportCmdF(command *cobra.Command, args []string) error {
 func buildExportCmdF(format string) func(command *cobra.Command, args []string) error {
 	return func(command *cobra.Command, args []string) error {
 		a, err := InitDBCommandContextCobra(command, app.SkipPostInitialization())
-		license := a.Srv().License()
+		// license := a.Srv().License()
 		if err != nil {
 			return err
 		}
@@ -182,9 +182,9 @@ func buildExportCmdF(format string) func(command *cobra.Command, args []string) 
 			return errors.New("limit flag error")
 		}
 
-		if a.MessageExport() == nil || license == nil || !*license.Features.MessageExport {
-			return errors.New("message export feature not available")
-		}
+		// if a.MessageExport() == nil || license == nil || !*license.Features.MessageExport {
+		// 	return errors.New("message export feature not available")
+		// }
 
 		warningsCount, appErr := a.MessageExport().RunExport(rctx, format, startTime, limit)
 		if appErr != nil {

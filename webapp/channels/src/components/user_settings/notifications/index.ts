@@ -25,7 +25,8 @@ const mapStateToProps = (state: GlobalState) => {
     const license = getLicense(state);
     const subscriptionProduct = getSubscriptionProduct(state);
 
-    const isEnterpriseReady = config.BuildEnterpriseReady === 'true';
+    // const isEnterpriseReady = config.BuildEnterpriseReady === 'true';
+    const isEnterpriseReady = true;
 
     return {
         sendPushNotifications,

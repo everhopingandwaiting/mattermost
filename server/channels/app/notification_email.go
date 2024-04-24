@@ -82,9 +82,10 @@ func (a *App) sendNotificationEmail(c request.CTX, notification *PostNotificatio
 	senderName := notification.GetSenderName(nameFormat, *a.Config().ServiceSettings.EnablePostUsernameOverride)
 
 	emailNotificationContentsType := model.EmailNotificationContentsFull
-	if license := a.Srv().License(); license != nil && *license.Features.EmailNotificationContents {
-		emailNotificationContentsType = *a.Config().EmailSettings.EmailNotificationContentsType
-	}
+	// if license := a.Srv().License(); license != nil && *license.Features.EmailNotificationContents {
+	// 	emailNotificationContentsType = *a.Config().EmailSettings.EmailNotificationContentsType
+	// }
+	emailNotificationContentsType = *a.Config().EmailSettings.EmailNotificationContentsType
 
 	var subjectText string
 	if channel.Type == model.ChannelTypeDirect {
