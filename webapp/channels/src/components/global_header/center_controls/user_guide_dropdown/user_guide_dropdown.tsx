@@ -79,12 +79,12 @@ class UserGuideDropdown extends React.PureComponent<Props, State> {
 
         return (
             <Menu.Group>
-                <Menu.ItemExternalLink
+                {/* <Menu.ItemExternalLink
                     id='mattermostUserGuideLink'
                     iconClassName='icon-file-text-outline'
                     url={mattermostUserGuideLink}
                     text={intl.formatMessage({id: 'userGuideHelp.mattermostUserGuide', defaultMessage: 'Mattermost user guide'})}
-                />
+                /> */}
                 {this.props.helpLink && (
                     <Menu.ItemExternalLink
                         id='trainingResourcesLink'

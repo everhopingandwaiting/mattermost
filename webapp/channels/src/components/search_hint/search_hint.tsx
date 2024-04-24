@@ -60,7 +60,7 @@ const SearchHint = (props: Props): JSX.Element => {
                                 a: (chunks) => (
                                     <ExternalLink
                                         className='search-hint_learn-search'
-                                        href='https://mattermost.com/pl/mattermost-academy-search-training'
+                                        href='#modifyByJyao'
                                     >
                                         <span>{chunks}</span>
                                         <i className='icon icon-lightbulb-outline'/>

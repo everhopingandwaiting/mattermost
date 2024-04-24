@@ -368,13 +368,13 @@ export class MainMenu extends React.PureComponent<Props> {
                         text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
                         icon={<i className='fa fa-mobile'/>}
                     />
-                    <Menu.ItemToggleModalRedux
+                    {/* <Menu.ItemToggleModalRedux
                         id='about'
                         modalId={ModalIdentifiers.ABOUT}
                         dialogType={AboutBuildModal}
                         text={formatMessage({id: 'navbar_dropdown.about', defaultMessage: 'About {appTitle}'}, {appTitle: this.props.siteName || 'Mattermost'})}
                         icon={<i className='fa fa-info'/>}
-                    />
+                    /> */}
                 </Menu.Group>
                 <Menu.Group>
                     <Menu.ItemAction

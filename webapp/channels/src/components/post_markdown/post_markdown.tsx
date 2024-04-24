@@ -129,7 +129,7 @@ export default class PostMarkdown extends React.PureComponent<Props> {
                 hasPluginTooltips={this.props.hasPluginTooltips}
                 imagesMetadata={this.props.post?.metadata?.images}
                 postId={this.props.post?.id}
-                editedAt={this.props.showPostEditedIndicator ? this.props.post?.edit_at : undefined}
+                editedAt={ (this.props.showPostEditedIndicator && !this.props.post?.props?.disable_post_edit_indicator )? this.props.post?.edit_at : undefined}
             />
         );
     }
