@@ -255,7 +255,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
 
     const showSessionExpiredNotificationIfNeeded = useCallback(() => {
         if (sessionExpired && !closeSessionExpiredNotification!.current) {
-            showNotification({
+            dispatch(showNotification({
                 title: siteName,
                 body: formatMessage({
                     id: 'login.session_expired.notification',
@@ -270,7 +270,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                         closeSessionExpiredNotification.current = undefined;
                     }
                 },
-            }).then(({callback: closeNotification}) => {
+            })).then(({callback: closeNotification}) => {
                 closeSessionExpiredNotification.current = closeNotification;
             }).catch(() => {
                 // Ignore the failure to display the notification.
