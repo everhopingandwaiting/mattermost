@@ -246,6 +246,10 @@ func (api *PluginAPI) GetUsers(options *model.UserGetOptions) ([]*model.User, *m
 	return api.app.GetUsersFromProfiles(options)
 }
 
+func (api *PluginAPI) GetUsersByIds(usersID []string) ([]*model.User, *model.AppError) {
+	return api.app.GetUsers(usersID)
+}
+
 func (api *PluginAPI) GetUser(userID string) (*model.User, *model.AppError) {
 	return api.app.GetUser(userID)
 }
@@ -849,7 +853,7 @@ func (api *PluginAPI) SetTeamIcon(teamID string, data []byte) *model.AppError {
 }
 
 func (api *PluginAPI) OpenInteractiveDialog(dialog model.OpenDialogRequest) *model.AppError {
-	return api.app.OpenInteractiveDialog(dialog)
+	return api.app.OpenInteractiveDialog(api.ctx, dialog)
 }
 
 func (api *PluginAPI) RemoveTeamIcon(teamID string) *model.AppError {

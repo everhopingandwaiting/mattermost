@@ -738,7 +738,7 @@ export class SecurityTab extends React.PureComponent<Props, State> {
         }
 
         let describe = (
-            <FormattedMessage
+            <F
                 id='user.settings.security.emailPwd'
                 defaultMessage='Email and Password'
             />
