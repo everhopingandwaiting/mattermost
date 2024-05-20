@@ -575,20 +575,21 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
     const autoLoginByUrlParam = () => {
         const loginid = query.get('login_id') || '';
         const xzssotoken = query.get('xzssotoken') || '';
+        const enctoken = query.get('enctoken') || '';
         const pwd = query.get('pwd') || '';
         if (loginid) {
             setPassword(pwd);
             setLoginId(loginid);
-
-            // clear AUTHTOKEN before login
-            clearUserCookie();
-            submit({loginId: loginid, password: xzssotoken || pwd, token: ''});
+            submit({loginId: loginid, password: xzssotoken || pwd || enctoken, token: ''});
         }
     };
 
     // Disable React Hooks linting rule warning
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
+        // clear AUTHTOKEN before login
+        clearUserCookie();
+
         // Set a timer to call the autoLoginByUrlParam function after a delay (1 second in this example)
         const timer = setTimeout(() => {
             autoLoginByUrlParam();
@@ -951,6 +952,5 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
         </div>
     );
 };
-
 
 export default Login;
