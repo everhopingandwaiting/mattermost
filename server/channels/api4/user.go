@@ -2240,7 +2240,7 @@ func attachDeviceId(c *Context, w http.ResponseWriter, r *http.Request) {
 		Path:     subpath,
 		MaxAge:   maxAgeSeconds,
 		Expires:  expiresAt,
-		HttpOnly: true,
+		HttpOnly: false,
 		Domain:   c.App.GetCookieDomain(),
 		Secure:   secure,
 	}

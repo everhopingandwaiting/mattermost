@@ -301,7 +301,7 @@ func (a *App) AttachSessionCookies(c request.CTX, w http.ResponseWriter, r *http
 		Path:     subpath,
 		MaxAge:   maxAgeSeconds,
 		Expires:  expiresAt,
-		HttpOnly: true,
+		HttpOnly: false,
 		Domain:   domain,
 		Secure:   secure,
 	}

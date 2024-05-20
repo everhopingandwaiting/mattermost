@@ -208,7 +208,7 @@ func (c *Context) RemoveSessionCookie(w http.ResponseWriter, r *http.Request) {
 		Value:    "",
 		Path:     subpath,
 		MaxAge:   -1,
-		HttpOnly: true,
+		HttpOnly: false,
 	}
 
 	http.SetCookie(w, cookie)

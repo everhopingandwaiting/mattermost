@@ -145,7 +145,7 @@ func manualTest(c *web.Context, w http.ResponseWriter, r *http.Request) {
 			Value:    client.AuthToken,
 			Path:     "/",
 			MaxAge:   *c.App.Config().ServiceSettings.SessionLengthWebInHours * 60 * 60,
-			HttpOnly: true,
+			HttpOnly: false,
 		}
 		http.SetCookie(w, sessionCookie)
 		http.Redirect(w, r, "/channels/town-square", http.StatusTemporaryRedirect)

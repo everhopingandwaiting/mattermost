@@ -761,7 +761,7 @@ func (a *App) GetAuthorizationCode(c request.CTX, w http.ResponseWriter, r *http
 		Path:     subpath,
 		MaxAge:   OAuthCookieMaxAgeSeconds,
 		Expires:  expiresAt,
-		HttpOnly: true,
+		HttpOnly: false,
 		Secure:   secure,
 	}
 
@@ -854,7 +854,7 @@ func (a *App) AuthorizeOAuthUser(c request.CTX, w http.ResponseWriter, r *http.R
 		Value:    "",
 		Path:     subpath,
 		MaxAge:   -1,
-		HttpOnly: true,
+		HttpOnly: false,
 	}
 
 	http.SetCookie(w, httpCookie)
