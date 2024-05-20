@@ -83,7 +83,7 @@ const MenuStartTrial = (props: Props): JSX.Element | null => {
             role='menuitem'
             id={props.id}
         >
-            <FreeVersionBadge>{'FREE EDITION'}</FreeVersionBadge>
+            {/* <FreeVersionBadge>{'FREE EDITION'}</FreeVersionBadge>
             {isE0 &&
                 <div className='start_trial_content'>
                     {formatMessage({
@@ -101,7 +101,7 @@ const MenuStartTrial = (props: Props): JSX.Element | null => {
             {showTrialButton &&
                 <button onClick={openLearnMoreTrialModal}>
                     {formatMessage({id: 'navbar_dropdown.startAnEnterpriseTrial', defaultMessage: 'Start an Enterprise trial'})}
-                </button>}
+                </button>} */}
         </li>
     );
 };

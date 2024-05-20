@@ -5103,7 +5103,7 @@
   "textbox.preview": "预览",
   "textbox.quote": ">引用",
   "textbox.strike": "删除线",
-  "threadFromArchivedChannelMessage": "您正在查看来自一个**已归档频道**的话题。无法发布新消息。",
+  "threadFromArchivedChannelMessage": "您正在查看来自一个**已归档群聊**的话题。无法发布新消息。",
   "threading.filters.unreads": "未读",
   "threading.following": "关注中",
   "threading.footer.lastReplyAt": "最后回复 {formatted}",
@@ -5655,8 +5655,8 @@
   "user_profile.account.localTime": "本地时间",
   "user_profile.account.localTimeWithTimezone": "本地时间（{timezone}）",
   "user_profile.account.post_was_created": "这消息是由@{username}的集成创建的",
-  "user_profile.add_user_to_channel": "添加到频道",
-  "user_profile.add_user_to_channel.icon": "添加用户到频道图标",
+  "user_profile.add_user_to_channel": "添加到群聊",
+  "user_profile.add_user_to_channel.icon": "添加用户到群聊图标",
   "user_profile.custom_status": "状态",
   "user_profile.custom_status.set_status": "设定状态",
   "user_profile.send.dm": "发送消息",
@@ -5753,5 +5753,6 @@
   "workspace_limits.teams_limit_reached.view_upgrade_options": "查看升级选项",
   "workspace_limits.upgrade": "升级以避免{planName}的数据限制",
   "workspace_limits.upgrade_reasons.free": "{planName}限制为 {messagesLimit} 条消息历史记录和 {storageLimit} 的文件存储空间。您可以删除项目以释放空间，或者升级到付费套餐。",
-  "yourcomputer": "您的电脑"
+  "yourcomputer": "您的电脑",
+  "product_branding_team_edition.titlename": "工作研判交流平台"
 }

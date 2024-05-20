@@ -1088,6 +1088,7 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
                             <input
                                 id='username'
                                 autoFocus={true}
+                                disabled={true}
                                 maxLength={Constants.MAX_USERNAME_LENGTH}
                                 className='form-control'
                                 type='text'

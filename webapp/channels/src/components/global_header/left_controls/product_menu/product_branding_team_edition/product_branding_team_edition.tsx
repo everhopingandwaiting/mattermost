@@ -2,6 +2,7 @@
 // See LICENSE.txt for license information.
 
 import React from 'react';
+import {FormattedMessage} from 'react-intl';
 import styled from 'styled-components';
 
 import Logo from 'components/common/svg_images_components/logo_dark_blue_svg';
@@ -15,6 +16,7 @@ const ProductBrandingTeamEditionContainer = styled.div`
     }
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const StyledLogo = styled(Logo)`
     path {
         fill: rgba(var(--sidebar-text-rgb), 0.75);
@@ -41,11 +43,15 @@ const Badge = styled.div`
 const ProductBrandingTeamEdition = (): JSX.Element => {
     return (
         <ProductBrandingTeamEditionContainer tabIndex={0}>
-            <StyledLogo
+            <FormattedMessage
+                id='product_branding_team_edition.titlename'
+                defaultMessage='Mattermost'
+            />
+            {/* <StyledLogo
                 width={116}
                 height={20}
-            />
-            <Badge>{'FREE EDITION'}</Badge>
+            /> */}
+            <Badge>{'GA'}</Badge>
         </ProductBrandingTeamEditionContainer>
     );
 };
