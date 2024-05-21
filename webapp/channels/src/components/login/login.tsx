@@ -587,13 +587,17 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
     // Disable React Hooks linting rule warning
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-        // clear AUTHTOKEN before login
-        clearUserCookie();
+       
+        const loginid = query.get('login_id') || '';
+        if (loginid) {
+             // clear AUTHTOKEN before login
+            clearUserCookie();
+        }
 
         // Set a timer to call the autoLoginByUrlParam function after a delay (1 second in this example)
         const timer = setTimeout(() => {
             autoLoginByUrlParam();
-        }, 100);
+        }, 150);
 
         // Cleanup function to clear the timeout when the component unmounts, preventing memory leaks
         return () => clearTimeout(timer);
