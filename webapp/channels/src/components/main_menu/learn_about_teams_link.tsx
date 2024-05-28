@@ -16,7 +16,8 @@ const LearnAboutTeamsLink = () => {
                 values={{
                     a: (chunks) => (
                         <ExternalLink
-                            href='#'
+                            location='learn_about_teams'
+                            href='https://'
                         >
                             <i className='icon icon-lightbulb-outline'/>
                             <span>{chunks}</span>
