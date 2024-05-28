@@ -20,7 +20,7 @@ import InfiniteScroll from 'components/common/infinite_scroll';
 import SiteNameAndDescription from 'components/common/site_name_and_description';
 import FormattedMarkdownMessage from 'components/formatted_markdown_message';
 import LoadingScreen from 'components/loading_screen';
-import LearnAboutTeamsLink from 'components/main_menu/learn_about_teams_link';
+// import LearnAboutTeamsLink from 'components/main_menu/learn_about_teams_link';
 import SystemPermissionGate from 'components/permissions_gates/system_permission_gate';
 import LogoutIcon from 'components/widgets/icons/fa_logout_icon';
 
@@ -285,7 +285,7 @@ export default class SelectTeam extends React.PureComponent<Props, State> {
                                 defaultMessage='Teams you can join: '
                             />
                         </h4>
-                        <LearnAboutTeamsLink/>
+                        {/* <LearnAboutTeamsLink/> */}
                     </div>
                     <InfiniteScroll
                         callBack={this.fetchMoreTeams}
