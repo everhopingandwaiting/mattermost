@@ -519,6 +519,7 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
                             <div className='col-sm-7'>
                                 <input
                                     autoFocus={true}
+                                    disabled={true}
                                     id='primaryEmail'
                                     className='form-control'
                                     type='email'
@@ -545,6 +546,7 @@ export class UserSettingsGeneralTab extends PureComponent<Props, State> {
                                 <input
                                     id='confirmEmail'
                                     className='form-control'
+                                    disabled={true}
                                     type='email'
                                     onChange={this.updateConfirmEmail}
                                     maxLength={Constants.MAX_EMAIL_LENGTH}

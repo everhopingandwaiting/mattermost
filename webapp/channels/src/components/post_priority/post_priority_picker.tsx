@@ -147,7 +147,7 @@ function PostPriorityPicker({
                     defaultMessage: 'Message priority',
                 })}
                 <BetaTag/>
-                <Feedback
+                {/* <Feedback
                     href={feedbackLink}
                     target='_blank'
                     rel='noopener noreferrer'
@@ -156,7 +156,7 @@ function PostPriorityPicker({
                         id={'post_priority.picker.feedback'}
                         defaultMessage={'Give feedback'}
                     />
-                </Feedback>
+                </Feedback> */}
             </Header>
             <div role='application'>
                 <Menu className='Menu'>

@@ -140,7 +140,7 @@ const notices: Notice[] = [
                 return false;
             }
 
-            return true;
+            return false;
         },
     },
     {
