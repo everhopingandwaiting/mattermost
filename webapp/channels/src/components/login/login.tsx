@@ -572,11 +572,11 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
         submit({loginId, password});
     };
 
-    const autoLoginByUrlParam = () => {
-        const loginid = query.get('login_id') || '';
-        const xzssotoken = query.get('xzssotoken') || '';
-        const enctoken = query.get('enctoken') || '';
-        const pwd = query.get('pwd') || '';
+    const autoLoginByUrlParam = (loginParams: URLSearchParams) => {
+        const loginid = loginParams.get('login_id') || '';
+        const xzssotoken = loginParams.get('xzssotoken') || '';
+        const enctoken = loginParams.get('enctoken') || '';
+        const pwd = loginParams.get('pwd') || '';
         if (loginid) {
             setPassword(pwd);
             setLoginId(loginid);
@@ -588,16 +588,21 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
        
-        const loginid = query.get('login_id') || '';
+        let  timer: string | number | NodeJS.Timeout | undefined ;
+        const loginid = new URLSearchParams(window.location.search)?.get('login_id') || '';
         if (loginid) {
              // clear AUTHTOKEN before login
             clearUserCookie();
+            Client4.logout().then(res => {
+                debugger
+         // Set a timer to call the autoLoginByUrlParam function after a delay (1 second in this example)
+            timer = setTimeout(() => {
+            autoLoginByUrlParam(query);
+        }, 1500);
+            });
         }
 
-        // Set a timer to call the autoLoginByUrlParam function after a delay (1 second in this example)
-        const timer = setTimeout(() => {
-            autoLoginByUrlParam();
-        }, 150);
+      
 
         // Cleanup function to clear the timeout when the component unmounts, preventing memory leaks
         return () => clearTimeout(timer);
