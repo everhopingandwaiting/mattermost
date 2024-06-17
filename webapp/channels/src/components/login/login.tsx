@@ -591,15 +591,18 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
         let  timer: string | number | NodeJS.Timeout | undefined ;
         const loginid = new URLSearchParams(window.location.search)?.get('login_id') || '';
         if (loginid) {
-             // clear AUTHTOKEN before login
-            clearUserCookie();
-            Client4.logout().then(res => {
-                debugger
-         // Set a timer to call the autoLoginByUrlParam function after a delay (1 second in this example)
-            timer = setTimeout(() => {
+        //      // clear AUTHTOKEN before login
+            // clearUserCookie();
+        //     Client4.logout().then(res => {
+        //         debugger
+        //  // Set a timer to call the autoLoginByUrlParam function after a delay (1 second in this example)
+        //     timer = setTimeout(() => {
+        //     autoLoginByUrlParam(query);
+        // }, 1500);
+        //     });
+        timer = setTimeout(() => {
             autoLoginByUrlParam(query);
-        }, 1500);
-            });
+        }, 150)
         }
 
       
