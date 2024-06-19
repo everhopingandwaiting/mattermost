@@ -668,7 +668,16 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
             return;
         }
 
-        await postSubmit();
+        const loginid = new URLSearchParams(search)?.get('login_id') || '';
+        if (loginid) {
+           setTimeout(() => {
+            postSubmit();
+           }, 500);
+        }
+        else {
+            await   postSubmit();
+        }
+        // await postSubmit();
     };
 
     const postSubmit = async () => {

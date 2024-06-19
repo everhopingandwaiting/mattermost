@@ -50,7 +50,7 @@ const MenuStartTrial = (props: Props): JSX.Element | null => {
             role='menuitem'
             id={props.id}
         >
-            <FreeVersionBadge>{'GA 内部版本'}</FreeVersionBadge>
+            <FreeVersionBadge>{'GA 内部版本 xdh'}</FreeVersionBadge>
             {/* 
             <div className='editionText'>
                 {formatMessage(
