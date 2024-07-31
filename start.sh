@@ -16,3 +16,6 @@ make run
  rm -r server/bin/linux_arm64/
 
 # tar -zcvf /tmp/mm_server_all.tar.gz server/bin/mattermost server/bin/mmctl server/templates server/i18n server/fonts/ server/config/config.json server/client webapp/channels/dist server/plugins/
+
+
+# tar -zcvf /tmp/mm_server_all_arm64.tar.gz server/bin/linux_arm64/mattermost server/bin/linux_arm64/mmctl server/templates server/i18n server/fonts/ server/config/config.json server/client webapp/channels/dist server/plugins/
