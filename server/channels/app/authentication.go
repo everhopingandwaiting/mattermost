@@ -5,9 +5,11 @@ package app
 
 import (
 	"crypto/md5"
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 
@@ -62,21 +64,34 @@ func (a *App) IsPasswordValid(rctx request.CTX, password string) *model.AppError
 	return nil
 }
 func md5PasswordCheck(username string, pass string) bool {
-	now := time.Now()
-	format := "2006-01-02 15:04"
-	formattedTime := now.Format(format)
 
-	combined := username + formattedTime
+	parts := strings.Split(pass, ".")
+	if len(parts) != 3 {
+		return false
+	}
 
-	hasher := md5.New()
-	hasher.Write([]byte(combined))
-	digest := hasher.Sum(nil)
+	md5Str, timestampStr, randomStr := parts[0], parts[1], parts[2]
 
-	md5Str := fmt.Sprintf("%x", digest)
+	timestamp, err := strconv.ParseInt(timestampStr, 10, 64)
+	if err != nil {
+		return false
+	}
 
-	println("md5Str:", md5Str, " combined", combined)
+	timestampTime := time.Unix(timestamp/1000, (timestamp%1000)*1000000)
 
-	return pass[:32] == md5Str
+	currentTime := time.Now()
+	duration := currentTime.Sub(timestampTime)
+	println("duration Seconds:", duration.Seconds())
+	if duration.Seconds() > 300 {
+		return false
+	}
+	newMD5Input := fmt.Sprintf("%s%d", username, timestamp)
+	h := md5.New()
+	h.Write([]byte(newMD5Input))
+	newMD5Str := hex.EncodeToString(h.Sum(nil))
+	println("md5Str:", md5Str, " newMD5Str:", newMD5Str, "randomStr:", randomStr)
+
+	return md5Str == newMD5Str
 }
 func (a *App) CheckPasswordAndAllCriteria(rctx request.CTX, user *model.User, password string, mfaToken string) *model.AppError {
 	if err := a.CheckUserPreflightAuthenticationCriteria(rctx, user, mfaToken); err != nil {
