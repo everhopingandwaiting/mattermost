@@ -2684,6 +2684,31 @@ func TestUpdateUserActive(t *testing.T) {
 			require.NoError(t, err)
 		})
 	})
+
+	t.Run("update active status of LDAP user should fail", func(t *testing.T) {
+		th := Setup(t).InitBasic()
+		defer th.TearDown()
+
+		ldapUser := &model.User{
+			Email:         "ldapuser@mattermost-customer.com",
+			Username:      "ldapuser",
+			Password:      "Password123",
+			AuthService:   model.UserAuthServiceLdap,
+			EmailVerified: true,
+		}
+		user, appErr := th.App.CreateUser(th.Context, ldapUser)
+		require.Nil(t, appErr)
+
+		th.TestForSystemAdminAndLocal(t, func(t *testing.T, client *model.Client4) {
+			resp, err := client.UpdateUserActive(context.Background(), user.Id, false)
+			require.Error(t, err)
+			CheckForbiddenStatus(t, resp)
+
+			resp, err = client.UpdateUserActive(context.Background(), user.Id, true)
+			require.Error(t, err)
+			CheckForbiddenStatus(t, resp)
+		})
+	})
 }
 
 func TestGetUsers(t *testing.T) {
@@ -3691,7 +3716,7 @@ func TestAttachDeviceId(t *testing.T) {
 					*cfg.ServiceSettings.SiteURL = tc.SiteURL
 				})
 
-				resp, err := th.Client.AttachDeviceId(context.Background(), deviceId)
+				resp, err := th.Client.AttachDeviceProps(context.Background(), map[string]string{"device_id": deviceId})
 				require.NoError(t, err)
 
 				cookies := resp.Header.Get("Set-Cookie")
@@ -3704,18 +3729,87 @@ func TestAttachDeviceId(t *testing.T) {
 		}
 	})
 
-	t.Run("invalid device id", func(t *testing.T) {
-		resp, err := th.Client.AttachDeviceId(context.Background(), "")
-		require.Error(t, err)
-		CheckBadRequestStatus(t, resp)
-	})
-
 	t.Run("not logged in", func(t *testing.T) {
 		th.Client.Logout(context.Background())
 
-		resp, err := th.Client.AttachDeviceId(context.Background(), "")
+		resp, err := th.Client.AttachDeviceProps(context.Background(), map[string]string{})
 		require.Error(t, err)
 		CheckUnauthorizedStatus(t, resp)
+	})
+
+	// Props related tests
+
+	client := th.CreateClient()
+	th.LoginBasicWithClient(client)
+
+	resetSession := func(session *model.Session) {
+		session.AddProp(model.SessionPropDeviceNotificationDisabled, "")
+		session.AddProp(model.SessionPropMobileVersion, "")
+		th.Server.Store().Session().UpdateProps(session)
+		th.App.ClearSessionCacheForUser(session.UserId)
+	}
+
+	t.Run("No props will return ok and no changes in the session", func(t *testing.T) {
+		session, _ := th.App.GetSession(client.AuthToken)
+		defer resetSession(session)
+		res, err := client.AttachDeviceProps(context.Background(), map[string]string{})
+		assert.NoError(t, err)
+
+		updatedSession, _ := th.App.GetSession(client.AuthToken)
+		storeSession, _ := th.Server.Store().Session().Get(th.Context, session.Id)
+		assert.Equal(t, http.StatusOK, res.StatusCode)
+		assert.Equal(t, session.Props, updatedSession.Props)
+		assert.Equal(t, session.Props, storeSession.Props)
+	})
+	t.Run("Unknown props will be ignored, returning ok and no changes in the session", func(t *testing.T) {
+		session, _ := th.App.GetSession(client.AuthToken)
+		defer resetSession(session)
+		res, err := client.AttachDeviceProps(context.Background(), map[string]string{"unknownProp": "foo"})
+		assert.NoError(t, err)
+
+		updatedSession, _ := th.App.GetSession(client.AuthToken)
+		storeSession, _ := th.Server.Store().Session().Get(th.Context, session.Id)
+		assert.Equal(t, http.StatusOK, res.StatusCode)
+		assert.Equal(t, session.Props, updatedSession.Props)
+		assert.Equal(t, session.Props, storeSession.Props)
+	})
+	t.Run("Invalid disabled notification prop will return an error and no changes in the session", func(t *testing.T) {
+		session, _ := th.App.GetSession(client.AuthToken)
+		defer resetSession(session)
+		res, err := client.AttachDeviceProps(context.Background(), map[string]string{model.SessionPropDeviceNotificationDisabled: "foo"})
+		assert.Error(t, err)
+
+		updatedSession, _ := th.App.GetSession(client.AuthToken)
+		storeSession, _ := th.Server.Store().Session().Get(th.Context, session.Id)
+		assert.Equal(t, http.StatusBadRequest, res.StatusCode)
+		assert.Equal(t, session.Props, updatedSession.Props)
+		assert.Equal(t, session.Props, storeSession.Props)
+	})
+	t.Run("Invalid version will return an error and no changes in the session", func(t *testing.T) {
+		session, _ := th.App.GetSession(client.AuthToken)
+		defer resetSession(session)
+		res, err := client.AttachDeviceProps(context.Background(), map[string]string{model.SessionPropMobileVersion: "foo"})
+		assert.Error(t, err)
+
+		updatedSession, _ := th.App.GetSession(client.AuthToken)
+		storeSession, _ := th.Server.Store().Session().Get(th.Context, session.Id)
+		assert.Equal(t, http.StatusBadRequest, res.StatusCode)
+		assert.Equal(t, session.Props, updatedSession.Props)
+		assert.Equal(t, session.Props, storeSession.Props)
+	})
+	t.Run("Will update props", func(t *testing.T) {
+		session, _ := th.App.GetSession(client.AuthToken)
+		defer resetSession(session)
+		res, err := client.AttachDeviceProps(context.Background(), map[string]string{model.SessionPropDeviceNotificationDisabled: "true", model.SessionPropMobileVersion: "2.19.0"})
+		assert.NoError(t, err)
+
+		updatedSession, _ := th.App.GetSession(client.AuthToken)
+		storeSession, _ := th.Server.Store().Session().Get(th.Context, session.Id)
+		assert.Equal(t, http.StatusOK, res.StatusCode)
+		assert.Equal(t, "true", updatedSession.Props[model.SessionPropDeviceNotificationDisabled])
+		assert.Equal(t, "true", storeSession.Props[model.SessionPropDeviceNotificationDisabled])
+		assert.Equal(t, "2.19.0", updatedSession.Props[model.SessionPropMobileVersion])
+		assert.Equal(t, "2.19.0", storeSession.Props[model.SessionPropMobileVersion])
 	})
 }
 
@@ -6786,29 +6880,6 @@ func TestThreadSocketEvents(t *testing.T) {
 		require.Truef(t, caught, "User should have received %s event", model.WebsocketEventThreadUpdated)
 	})
 
-	resp, err = th.Client.UpdateThreadFollowForUser(context.Background(), th.BasicUser.Id, th.BasicTeam.Id, rpost.Id, false)
-	require.NoError(t, err)
-	CheckOKStatus(t, resp)
-
-	t.Run("Listed for follow event", func(t *testing.T) {
-		var caught bool
-		func() {
-			for {
-				select {
-				case ev := <-userWSClient.EventChannel:
-					if ev.EventType() == model.WebsocketEventThreadFollowChanged {
-						caught = true
-						require.Equal(t, ev.GetData()["state"], false)
-						require.Equal(t, ev.GetData()["reply_count"], float64(1))
-					}
-				case <-time.After(2 * time.Second):
-					return
-				}
-			}
-		}()
-		require.Truef(t, caught, "User should have received %s event", model.WebsocketEventThreadFollowChanged)
-	})
-
 	_, resp, err = th.Client.UpdateThreadReadForUser(context.Background(), th.BasicUser.Id, th.BasicTeam.Id, rpost.Id, replyPost.CreateAt+1)
 	require.NoError(t, err)
 	CheckOKStatus(t, resp)
@@ -6838,6 +6909,31 @@ func TestThreadSocketEvents(t *testing.T) {
 		require.Truef(t, caught, "User should have received %s event", model.WebsocketEventThreadReadChanged)
 	})
 
+	resp, err = th.Client.UpdateThreadFollowForUser(context.Background(), th.BasicUser.Id, th.BasicTeam.Id, rpost.Id, false)
+	require.NoError(t, err)
+	CheckOKStatus(t, resp)
+
+	t.Run("Listed for follow event", func(t *testing.T) {
+		var caught bool
+		func() {
+			for {
+				select {
+				case ev := <-userWSClient.EventChannel:
+					if ev.EventType() == model.WebsocketEventThreadFollowChanged {
+						caught = true
+						require.Equal(t, ev.GetData()["state"], false)
+						require.Equal(t, ev.GetData()["reply_count"], float64(1))
+					}
+				case <-time.After(2 * time.Second):
+					return
+				}
+			}
+		}()
+		require.Truef(t, caught, "User should have received %s event", model.WebsocketEventThreadFollowChanged)
+	})
+
+	_, err = th.Client.UpdateThreadFollowForUser(context.Background(), th.BasicUser.Id, th.BasicTeam.Id, rpost.Id, true)
+	require.NoError(t, err)
 	_, resp, err = th.Client.SetThreadUnreadByPostId(context.Background(), th.BasicUser.Id, th.BasicTeam.Id, rpost.Id, rpost.Id)
 	require.NoError(t, err)
 	CheckOKStatus(t, resp)
@@ -7774,5 +7870,77 @@ func TestUserUpdateEvents(t *testing.T) {
 			// assert eventUser.NotifyProps is an empty map
 			require.Empty(t, eventUser.NotifyProps, "user event for non-source users should be sanitized")
 		})
+	})
+}
+
+func TestLoginWithDesktopToken(t *testing.T) {
+	th := Setup(t).InitBasic()
+	defer th.TearDown()
+
+	t.Run("login SAML User with desktop token", func(t *testing.T) {
+		samlUser := th.CreateUserWithAuth(model.UserAuthServiceSaml)
+
+		token, appErr := th.App.GenerateAndSaveDesktopToken(time.Now().Unix(), samlUser)
+		assert.Nil(t, appErr)
+
+		user, _, err := th.Client.LoginWithDesktopToken(context.Background(), *token, "")
+		require.NoError(t, err)
+		assert.Equal(t, samlUser.Id, user.Id)
+
+		sessions, _, err := th.SystemAdminClient.GetSessions(context.Background(), samlUser.Id, "")
+		require.NoError(t, err)
+
+		assert.Len(t, sessions, 1)
+		assert.Equal(t, "true", sessions[0].Props["isSaml"])
+		assert.Equal(t, "false", sessions[0].Props["isOAuthUser"])
+	})
+
+	t.Run("login OAuth User with desktop token", func(t *testing.T) {
+		gitlabUser := th.CreateUserWithAuth(model.UserAuthServiceGitlab)
+
+		token, appErr := th.App.GenerateAndSaveDesktopToken(time.Now().Unix(), gitlabUser)
+		assert.Nil(t, appErr)
+
+		user, _, err := th.Client.LoginWithDesktopToken(context.Background(), *token, "")
+		require.NoError(t, err)
+		assert.Equal(t, gitlabUser.Id, user.Id)
+
+		sessions, _, err := th.SystemAdminClient.GetSessions(context.Background(), gitlabUser.Id, "")
+		require.NoError(t, err)
+
+		assert.Len(t, sessions, 1)
+		assert.Equal(t, "false", sessions[0].Props["isSaml"])
+		assert.Equal(t, "true", sessions[0].Props["isOAuthUser"])
+	})
+
+	t.Run("login email user with desktop token", func(t *testing.T) {
+		// Sleep to avoid rate limit error
+		time.Sleep(time.Second)
+		user := th.CreateUser()
+
+		token, appErr := th.App.GenerateAndSaveDesktopToken(time.Now().Unix(), user)
+		assert.Nil(t, appErr)
+
+		_, resp, err := th.Client.LoginWithDesktopToken(context.Background(), *token, "")
+		require.Error(t, err)
+		CheckUnauthorizedStatus(t, resp)
+	})
+
+	t.Run("invalid desktop token on login", func(t *testing.T) {
+		user := th.CreateUser()
+
+		_, appErr := th.App.GenerateAndSaveDesktopToken(time.Now().Unix(), user)
+		assert.Nil(t, appErr)
+
+		invalidToken := "testinvalidToken"
+		token := &invalidToken
+
+		_, _, err := th.Client.LoginWithDesktopToken(context.Background(), *token, "")
+		require.Error(t, err)
+
+		sessions, _, err := th.SystemAdminClient.GetSessions(context.Background(), user.Id, "")
+		require.NoError(t, err)
+
+		assert.Len(t, sessions, 0)
 	})
 }

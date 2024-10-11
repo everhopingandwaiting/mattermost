@@ -3854,6 +3854,7 @@ func testChannelStoreGetAllChannels(t *testing.T, rctx request.CTX, ss store.Sto
 	c1.DisplayName = "Channel1" + model.NewId()
 	c1.Name = NewTestId()
 	c1.Type = model.ChannelTypeOpen
+	c1.GroupConstrained = model.NewPointer(true)
 	_, nErr := ss.Channel().Save(rctx, &c1, -1)
 	require.NoError(t, nErr)
 
@@ -3939,6 +3940,19 @@ func testChannelStoreGetAllChannels(t *testing.T, rctx request.CTX, ss store.Sto
 	list, nErr = ss.Channel().GetAllChannels(0, 10, store.ChannelSearchOpts{NotAssociatedToGroup: group.Id})
 	require.NoError(t, nErr)
 	assert.Len(t, list, 1)
+	assert.Equal(t, c3.Id, list[0].Id)
+
+	// GroupConstrained
+	list, nErr = ss.Channel().GetAllChannels(0, 10, store.ChannelSearchOpts{GroupConstrained: true})
+	require.NoError(t, nErr)
+	require.Len(t, list, 1)
+	assert.Equal(t, c1.Id, list[0].Id)
+
+	// ExcludeGroupConstrained
+	list, nErr = ss.Channel().GetAllChannels(0, 10, store.ChannelSearchOpts{ExcludeGroupConstrained: true})
+	require.NoError(t, nErr)
+	require.Len(t, list, 1)
+	assert.Equal(t, c3.Id, list[0].Id)
 
 	// Exclude channel names
 	list, nErr = ss.Channel().GetAllChannels(0, 10, store.ChannelSearchOpts{ExcludeChannelNames: []string{c1.Name}})
@@ -7852,7 +7866,7 @@ func testChannelStoreExportAllDirectChannelsDeletedChannel(t *testing.T, rctx re
 	d1, nErr = ss.Channel().GetAllDirectChannelsForExportAfter(10000, strings.Repeat("0", 26), true)
 	assert.NoError(t, nErr)
 	assert.Len(t, d1, 1)
-	assert.Len(t, *d1[0].Members, 2)
+	assert.Len(t, d1[0].Members, 2)
 
 	// Manually truncate Channels table until testlib can handle cleanups
 	s.GetMasterX().Exec("TRUNCATE Channels")
