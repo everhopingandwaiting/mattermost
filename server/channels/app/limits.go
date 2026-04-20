@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	maxUsersLimit     = 200
-	maxUsersHardLimit = 250
+	maxUsersLimit     = 0
+	maxUsersHardLimit = 0
 )
 
 func (a *App) GetServerLimits() (*model.ServerLimits, *model.AppError) {
@@ -37,15 +37,17 @@ func (a *App) GetServerLimits() (*model.ServerLimits, *model.AppError) {
 	}
 
 	// Check if license has post history limits and get the calculated timestamp
-	if license != nil && license.Limits != nil && license.Limits.PostHistory > 0 {
-		limits.PostHistoryLimit = license.Limits.PostHistory
-		// Get the calculated timestamp of the last accessible post
-		lastAccessibleTime, appErr := a.GetLastAccessiblePostTime()
-		if appErr != nil {
-			return nil, appErr
-		}
-		limits.LastAccessiblePostTime = lastAccessibleTime
-	}
+	// DISABLED: Always set PostHistoryLimit to 0 to remove message history restrictions
+	// if license != nil && license.Limits != nil && license.Limits.PostHistory > 0 {
+	// 	limits.PostHistoryLimit = license.Limits.PostHistory
+	// 	// Get the calculated timestamp of the last accessible post
+	// 	lastAccessibleTime, appErr := a.GetLastAccessiblePostTime()
+	// 	if appErr != nil {
+	// 		return nil, appErr
+	// 	}
+	// 	limits.LastAccessiblePostTime = lastAccessibleTime
+	// }
+	limits.PostHistoryLimit = 0
 
 	activeUserCount, appErr := a.Srv().Store().User().Count(model.UserCountOptions{})
 	if appErr != nil {
@@ -89,13 +91,8 @@ func (a *App) shouldTrackSingleChannelGuests() bool {
 }
 
 func (a *App) GetPostHistoryLimit() int64 {
-	license := a.License()
-	if license == nil || license.Limits == nil || license.Limits.PostHistory == 0 {
-		// No limits applicable
-		return 0
-	}
-
-	return license.Limits.PostHistory
+	// DISABLED: Always return 0 to remove message history restrictions
+	return 0
 }
 
 func (a *App) isAtUserLimit() (bool, *model.AppError) {

