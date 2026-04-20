@@ -95,6 +95,7 @@ const CompletedWrapper = styled.div`
     }
 
     .download-apps {
+        display: none;
         margin-top: 24px;
         width: 200px;
         font-size: 12px;

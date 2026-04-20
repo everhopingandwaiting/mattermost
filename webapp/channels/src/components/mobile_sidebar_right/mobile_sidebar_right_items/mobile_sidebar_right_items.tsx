@@ -407,7 +407,7 @@ export class MobileSidebarRightItems extends React.PureComponent<Props> {
                     />
                     <Menu.ItemExternalLink
                         id='nativeAppLink'
-                        show={this.props.appDownloadLink}
+                        show={false}
                         url={safeAppDownloadLink}
                         text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
                         icon={

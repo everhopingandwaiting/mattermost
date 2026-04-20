@@ -208,7 +208,7 @@ const ProductMenuList = (props: Props): JSX.Element | null => {
                 </TeamPermissionGate>
                 <Menu.ItemExternalLink
                     id='nativeAppLink'
-                    show={appDownloadLink}
+                    show={false}
                     url={makeUrlSafe(appDownloadLink)}
                     text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
                     icon={<DownloadOutlineIcon size={18}/>}
